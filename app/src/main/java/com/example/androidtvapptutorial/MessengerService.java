@@ -44,7 +44,6 @@ public class MessengerService extends Service {
 
     private Messenger randomNumberMessenger=new Messenger(new RandomNumberRequestHandler());
 
-
     @Override
     public IBinder onBind(Intent intent) {
         return randomNumberMessenger.getBinder();
@@ -60,15 +59,11 @@ public class MessengerService extends Service {
         super.onStart(intent, startId);
     }
 
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         stopRandomNumberGenerator();
     }
-
-
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
