@@ -7,6 +7,10 @@
 
     <uses-feature android:name="android.software.leanback" android:required="true"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <!--<uses-feature android:name="android.hardware.Camera" android:required="false"/>-->
+    <uses-feature android:name="android.hardware.Camera2" android:required="false"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +20,7 @@
         android:theme="@style/Theme.Leanback">
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
