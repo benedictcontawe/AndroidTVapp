@@ -72,8 +72,8 @@ public class MainFragment extends BrowseFragment {
         //endregion
 
         //region CardPresenter
-        CardPresenter cardPresenter = new CardPresenter();
         HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
+        CardPresenter cardPresenter = new CardPresenter();
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
         /*
@@ -115,6 +115,8 @@ public class MainFragment extends BrowseFragment {
             Log.i("Movie Information",movie.toString());
             cardRowAdapter.add(movie);
         }
+
+
 
         mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
         //endregion
