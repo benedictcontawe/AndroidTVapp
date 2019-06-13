@@ -22,12 +22,16 @@ public class MainFragment extends BrowseFragment {
         Log.i(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
 
+        prepareBackgroundManager();
+
         setupUIElements();
 
         loadRows();
 
         setupEventListeners();
+    }
 
+    private void prepareBackgroundManager(){
         simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
     }
 
@@ -68,8 +72,8 @@ public class MainFragment extends BrowseFragment {
         //endregion
 
         //region CardPresenter
-        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
         CardPresenter cardPresenter = new CardPresenter();
+        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
         /*
