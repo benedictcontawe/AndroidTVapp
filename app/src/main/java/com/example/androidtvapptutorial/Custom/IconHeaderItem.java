@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.Custom;
 
 import android.support.v17.leanback.widget.HeaderItem;
 
