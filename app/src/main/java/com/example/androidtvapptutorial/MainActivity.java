@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate");
-        Toast.makeText(this,"Hellow",Toast.LENGTH_SHORT).show();
+
         serviceIntent = new Intent(getApplicationContext(),MessengerService.class);
     }
 

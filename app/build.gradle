@@ -27,7 +27,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Picasso Library
-    implementation 'com.squareup.picasso:picasso:2.3.2'
+    //implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //Android UI Layout Library
     implementation 'com.android.support:support-v4:28.0.0'
