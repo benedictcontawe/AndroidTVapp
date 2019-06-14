@@ -2,6 +2,7 @@ package com.example.androidtvapptutorial;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v17.leanback.app.BrowseFragment;
 import android.support.v17.leanback.widget.*;
 import android.util.Log;
@@ -107,6 +108,7 @@ public class MainFragment extends BrowseFragment {
         cardRowAdapter.add(movie);
         */
 
+        /*
         for(int i=0; i<10; i++) {
             Movie movie = new Movie();
             movie.setTitle("title" + i);
@@ -115,8 +117,37 @@ public class MainFragment extends BrowseFragment {
             Log.i("Movie Information",movie.toString());
             cardRowAdapter.add(movie);
         }
+        */
 
+        Movie movie = new Movie();
+        movie.setTitle("title 0");
+        movie.setStudio("studio 0");
+        Log.i("Movie Information",movie.toString());
+        cardRowAdapter.add(movie);
 
+        Movie movie1 = new Movie();
+        movie1.setTitle("title 1");
+        movie1.setStudio("studio 1");
+        Log.i("Movie Information",movie1.toString());
+        cardRowAdapter.add(movie1);
+
+        Movie movie2 = new Movie();
+        movie2.setTitle("title 2");
+        movie2.setStudio("studio 2");
+        Log.i("Movie Information",movie2.toString());
+        cardRowAdapter.add(movie2);
+
+        Movie movie3 = new Movie();
+        movie3.setTitle("title 3");
+        movie3.setStudio("studio 3");
+        Log.i("Movie Information",movie3.toString());
+        cardRowAdapter.add(movie3);
+
+        Movie movie4 = new Movie();
+        movie4.setTitle("title 4");
+        movie4.setStudio("studio 4");
+        Log.i("Movie Information",movie4.toString());
+        cardRowAdapter.add(movie4);
 
         mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
         //endregion
@@ -127,6 +158,7 @@ public class MainFragment extends BrowseFragment {
 
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
+        setOnItemViewClickedListener(new ItemViewClickedListener());
     }
 
     private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
@@ -141,4 +173,15 @@ public class MainFragment extends BrowseFragment {
             }
         }
     }
+
+    private final class ItemViewClickedListener implements OnItemViewClickedListener {
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        @Override
+        public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
+                                  RowPresenter.ViewHolder rowViewHolder, Row row) {
+            // each time the item is clicked, code inside here will be executed.
+            Toast.makeText(getContext(),"Click",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

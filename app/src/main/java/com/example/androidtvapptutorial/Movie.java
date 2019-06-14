@@ -16,6 +16,7 @@ public class Movie {
     private String cardImageUrl;
 
     public Movie() {
+
     }
 
     /*public String getCardImageUrl() {

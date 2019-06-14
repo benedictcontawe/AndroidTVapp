@@ -28,7 +28,8 @@ public class SimpleBackgroundManager {
     }
 
     public void clearBackground() {
-        mBackgroundManager.setDrawable(mDefaultBackground);
+        //mBackgroundManager.setDrawable(mDefaultBackground);
+        mBackgroundManager.setDrawable(null);
     }
 
 }
