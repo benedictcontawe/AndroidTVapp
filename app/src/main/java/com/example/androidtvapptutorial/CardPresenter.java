@@ -9,7 +9,7 @@ import android.support.v17.leanback.widget.Presenter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Target;
 
