@@ -51,11 +51,20 @@ public class Movie {
         this.studio = studio;
     }
 
+    public String getCardImageUrl() {
+        return cardImageUrl;
+    }
+
+    public void setCardImageUrl(String cardImageUrl) {
+        this.cardImageUrl = cardImageUrl;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", cardImageUrl='" + cardImageUrl + '\'' +
                 '}';
     }
 

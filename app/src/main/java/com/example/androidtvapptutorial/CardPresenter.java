@@ -9,6 +9,7 @@ import android.support.v17.leanback.widget.Presenter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Target;
 
@@ -76,16 +77,22 @@ public class CardPresenter extends Presenter {
 
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
-        Movie movie = (Movie) item;
-        ((ViewHolder) viewHolder).setMovie(movie);
-
         Log.d(TAG, "onBindViewHolder");
-        ((ViewHolder) viewHolder).mCardView.setTitleText(movie.getTitle());
-        ((ViewHolder) viewHolder).mCardView.setContentText(movie.getStudio());
-        ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
+        Movie movie = (Movie) item;
+        ViewHolder cardView = ((ViewHolder) viewHolder);
 
+        cardView.setMovie(movie);
+        cardView.mCardView.setTitleText(movie.getTitle());
+        cardView.mCardView.setContentText(movie.getStudio());
+        cardView.mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
+
+        cardView.mCardView.setMainImage(cardView.getDefaultCardImage());
         //((ViewHolder) viewHolder).updateCardViewImage(movie.getCardImageURI());
-        ((ViewHolder) viewHolder).mCardView.setMainImage(((ViewHolder) viewHolder).getDefaultCardImage());
+        /*Glide.with(viewHolder.view.getContext())
+                .load(movie.getCardImageUrl())
+                .centerCrop()
+                .error(cardView.getDefaultCardImage())
+        ;*/
     }
 
     @Override
