@@ -7,8 +7,6 @@ import android.util.DisplayMetrics;
 
 public class SimpleBackgroundManager {
 
-    private static final String TAG = SimpleBackgroundManager.class.getSimpleName();
-
     private final int DEFAULT_BACKGROUND_RES_ID = R.mipmap.ic_launcher;
     private static Drawable mDefaultBackground;
 
