@@ -2,11 +2,13 @@ package com.example.androidtvapptutorial;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v17.leanback.app.BrowseFragment;
-import android.support.v17.leanback.widget.*;
+import androidx.annotation.RequiresApi;
+import androidx.leanback.app.BrowseFragment;
+import androidx.leanback.app.BrowseSupportFragment;
+import androidx.leanback.widget.*;
 import android.util.Log;
 import android.widget.Toast;
+import com.example.androidtvapptutorial.Custom.IconHeaderItemPresenter;
 
 public class MainFragment extends BrowseFragment {
 
@@ -50,6 +52,14 @@ public class MainFragment extends BrowseFragment {
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         // set search icon color
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
+        /*
+        setHeaderPresenterSelector(new PresenterSelector() {
+            @Override
+            public Presenter getPresenter(Object o) {
+                return new IconHeaderItemPresenter();
+            }
+        });
+        */
     }
 
     private void loadRows(){
