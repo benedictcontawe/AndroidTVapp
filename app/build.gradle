@@ -20,6 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    /*dataBinding {
+        enabled true
+    }*/
 }
 
 dependencies {
@@ -38,4 +41,13 @@ dependencies {
 
     //Android TV UI Library
     implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+
+    //Life Cycle Components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    //Android Unit Test and U.I. Test Library
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

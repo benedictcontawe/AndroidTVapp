@@ -3,14 +3,14 @@ package com.example.androidtvapptutorial;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
-import androidx.leanback.app.BrowseFragment;
+//import androidx.leanback.app.BrowseFragment;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
 import android.util.Log;
 import android.widget.Toast;
 import com.example.androidtvapptutorial.Custom.IconHeaderItemPresenter;
 
-public class MainFragment extends BrowseFragment {
+public class MainFragment extends BrowseSupportFragment {
 
     private final String TAG = MainFragment.class.getSimpleName();
 
