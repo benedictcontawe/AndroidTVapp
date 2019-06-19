@@ -1,6 +1,6 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.DataModel;
 
-class UsbFileCard {
+public class UsbFileCard {
     private String fileName;
     private String fileExt;
 

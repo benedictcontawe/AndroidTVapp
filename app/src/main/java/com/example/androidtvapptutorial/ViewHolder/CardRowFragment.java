@@ -1,10 +1,13 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.ViewHolder;
 
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
+import com.example.androidtvapptutorial.DataModel.UsbFileCard;
+import com.example.androidtvapptutorial.DataModel.UsbFileCardRow;
+import com.example.androidtvapptutorial.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +62,7 @@ class CardRowFragment extends RowsSupportFragment implements OnItemViewClickedLi
         dummyUsbFileCardRows.add(new UsbFileCardRow("Pictures", dummyUsbFileCardsImg));
 
         for (UsbFileCardRow usbFileCardRow : dummyUsbFileCardRows) {
-            rowsAdapter.add(createCardRow(usbFileCardRow));
+             rowsAdapter.add(createCardRow(usbFileCardRow));
         }
     }
 

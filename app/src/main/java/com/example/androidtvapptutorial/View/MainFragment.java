@@ -1,12 +1,12 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.View;
 
 import android.os.Bundle;
 import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment;
-import androidx.leanback.widget.ArrayObjectAdapter;
-import androidx.leanback.widget.HeaderItem;
-import androidx.leanback.widget.ListRowPresenter;
-import androidx.leanback.widget.PageRow;
+import androidx.leanback.widget.*;
+import com.example.androidtvapptutorial.R;
+import com.example.androidtvapptutorial.ViewHolder.RowFragmentFactory;
+import com.example.androidtvapptutorial.SimpleBackgroundManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,8 @@ public class MainFragment extends BrowseSupportFragment {
         setupUIElements();
 
         loadData();
+
+        Log.e(MainFragment.class.getSimpleName(),String.valueOf(getSelectedPosition()));
 
         getMainFragmentRegistry().registerFragment(PageRow.class,new RowFragmentFactory());
     }
@@ -85,5 +87,4 @@ public class MainFragment extends BrowseSupportFragment {
         //After the Fragment finishes the loading data it will execute an entrance transition
         startEntranceTransition();
     }
-
 }

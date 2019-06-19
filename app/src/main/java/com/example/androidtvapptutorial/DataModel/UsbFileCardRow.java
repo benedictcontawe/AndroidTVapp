@@ -1,8 +1,8 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.DataModel;
 
 import java.util.List;
 
-class UsbFileCardRow {
+public class UsbFileCardRow {
     private String title;
     private List<UsbFileCard> usbFileCards;
 

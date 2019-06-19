@@ -1,11 +1,9 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.View;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
+import com.example.androidtvapptutorial.R;
 
 public class MainActivity extends FragmentActivity {
 

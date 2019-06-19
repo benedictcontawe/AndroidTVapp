@@ -1,17 +1,13 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.ViewHolder;
 
-import android.content.Context;
 //import android.graphics.Bitmap;
 //import android.graphics.drawable.BitmapDrawable;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.Gravity;
+        import android.view.Gravity;
 import android.widget.TextView;
-import androidx.leanback.widget.ImageCardView;
-import androidx.leanback.widget.Presenter;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
+        import androidx.leanback.widget.Presenter;
+        import android.view.ViewGroup;
+import com.example.androidtvapptutorial.DataModel.UsbFileCard;
 //import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Target;
