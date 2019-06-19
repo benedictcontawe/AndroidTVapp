@@ -1,3 +1,4 @@
+/*
 package com.example.androidtvapptutorial
 
 class Movie {
@@ -42,4 +43,4 @@ class Movie {
                 ", title='" + title + '\''.toString() +
                 '}'.toString()
     }
-}
+}*/

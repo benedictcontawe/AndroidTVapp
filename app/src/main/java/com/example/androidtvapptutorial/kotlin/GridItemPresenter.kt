@@ -1,3 +1,4 @@
+/*
 package com.example.androidtvapptutorial
 
 import android.graphics.Color
@@ -10,14 +11,15 @@ class GridItemPresenter : Presenter {
     var GRID_ITEM_WIDTH : Int? = null
     var GRID_ITEM_HEIGHT : Int? = null
     var BACKGROUND_COLOR : Int? = null
-    /**
+*
      *
      * @author {Benedict Contawe}
      * @param GRID_ITEM_WIDTH Specifies the lenght of the Width of an item
      * @param GRID_ITEM_HEIGHT Specifies the lenght of the Height of an item
      * @param BACKGROUND_COLOR Specifies the Color of the background of an item
      *
-     */
+     
+
     constructor(GRID_ITEM_WIDTH : Int, GRID_ITEM_HEIGHT : Int, BACKGROUND_COLOR : Int){
         this.GRID_ITEM_WIDTH = GRID_ITEM_WIDTH
         this.GRID_ITEM_HEIGHT = GRID_ITEM_HEIGHT
@@ -45,3 +47,4 @@ class GridItemPresenter : Presenter {
     }
 
 }
+*/

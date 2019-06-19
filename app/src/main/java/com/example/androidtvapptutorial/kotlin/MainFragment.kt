@@ -1,3 +1,4 @@
+/*
 package com.example.androidtvapptutorial
 
 import android.content.res.Resources
@@ -38,11 +39,13 @@ class MainFragment : BrowseFragment() {
 
     private fun setupElements(){
         setTitle("Hello Android TV!")
-        /*
+        */
+/*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             setBadgeDrawable(resources.getDrawable(R.mipmap.ic_launcher,context.theme))
         }
-        */
+        *//*
+
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
         setBrandColor(getResources().getColor(R.color.fastlane_background));
@@ -67,4 +70,4 @@ class MainFragment : BrowseFragment() {
         // set
         setAdapter(mRowsAdapter)
     }
-}
+}*/
