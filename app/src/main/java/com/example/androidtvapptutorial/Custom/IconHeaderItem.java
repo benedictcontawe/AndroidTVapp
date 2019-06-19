@@ -1,6 +1,6 @@
 package com.example.androidtvapptutorial.Custom;
 
-import android.support.v17.leanback.widget.HeaderItem;
+import androidx.leanback.widget.HeaderItem;
 
 public class IconHeaderItem extends HeaderItem {
 
