@@ -2,14 +2,13 @@ package com.example.androidtvapptutorial.Custom.Header;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.leanback.widget.ListRow;
-import androidx.leanback.widget.Presenter;
-import androidx.leanback.widget.RowHeaderPresenter;
+import androidx.leanback.widget.*;
 import com.example.androidtvapptutorial.R;
 
 public class IconHeaderItemPresenter extends RowHeaderPresenter {
@@ -35,13 +34,14 @@ public class IconHeaderItemPresenter extends RowHeaderPresenter {
 
         ImageView iconView = (ImageView) rootView.findViewById(R.id.header_icon);
         int iconResId = iconHeaderItem.getIconResId();
-        if( iconResId != IconHeaderItem.ICON_NONE) { // Show icon only when it is set.
+        if (iconResId != IconHeaderItem.ICON_NONE) { // Show icon only when it is set.
             Drawable icon = rootView.getResources().getDrawable(iconResId, null);
             iconView.setImageDrawable(icon);
         }
 
         TextView label = (TextView) rootView.findViewById(R.id.header_label);
         label.setText(iconHeaderItem.getName());
+        Log.e(IconHeaderItemPresenter.class.getSimpleName(), label.getText().toString());
     }
 
     @Override
