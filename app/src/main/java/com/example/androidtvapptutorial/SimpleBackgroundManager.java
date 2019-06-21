@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import androidx.leanback.app.BackgroundManager;
 import android.util.DisplayMetrics;
+import com.example.androidtvapptutorial.R;
 
 public class SimpleBackgroundManager {
 

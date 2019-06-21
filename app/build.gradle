@@ -41,6 +41,7 @@ dependencies {
 
     //Android TV UI Library
     implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.leanback:leanback-preference:1.0.0'
     //implementation 'androidx.appcompat:appcompat:1.0.2'
 
     //Life Cycle Components

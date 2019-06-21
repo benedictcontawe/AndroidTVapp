@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
 import com.example.androidtvapptutorial.R;
-import com.example.androidtvapptutorial.ViewHolder.RowFragmentFactory;
+import com.example.androidtvapptutorial.RowFragmentFactory;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
 
 import java.util.ArrayList;
@@ -74,6 +74,10 @@ public class MainFragment extends BrowseSupportFragment {
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         setAdapter(mRowsAdapter);
 
+
+        mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
+        mRowsAdapter.add(new DividerRow());
+
         //Create List of HeaderItem Data and add to the Instance of Array Object Adapter
         List<HeaderItem> dummyHeaders = new ArrayList<>();
         dummyHeaders.add(new HeaderItem(0, "USB All"));
@@ -83,6 +87,8 @@ public class MainFragment extends BrowseSupportFragment {
         for (HeaderItem header : dummyHeaders) {
             mRowsAdapter.add(new PageRow(header));
         }
+
+        mRowsAdapter.add(new DividerRow());
 
         //After the Fragment finishes the loading data it will execute an entrance transition
         startEntranceTransition();
