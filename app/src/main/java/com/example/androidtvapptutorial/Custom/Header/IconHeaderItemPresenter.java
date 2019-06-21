@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial.Custom;
+package com.example.androidtvapptutorial.Custom.Header;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -1,9 +1,4 @@
-package com.example.androidtvapptutorial;
-
-import android.util.Log;
-
-import java.net.URI;
-import java.net.URISyntaxException;
+package com.example.androidtvapptutorial.ViewModel;
 
 public class Movie {
 

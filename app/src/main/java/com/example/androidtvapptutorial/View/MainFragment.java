@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.View;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -8,8 +8,13 @@ import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
 import android.util.Log;
 import android.widget.Toast;
-import com.example.androidtvapptutorial.Custom.IconHeaderItem;
-import com.example.androidtvapptutorial.Custom.IconHeaderItemPresenter;
+import com.example.androidtvapptutorial.Custom.Header.IconHeaderItem;
+import com.example.androidtvapptutorial.Custom.Header.IconHeaderItemPresenter;
+import com.example.androidtvapptutorial.ViewModel.Movie;
+import com.example.androidtvapptutorial.Presenter.CardPresenter;
+import com.example.androidtvapptutorial.Presenter.GridItemPresenter;
+import com.example.androidtvapptutorial.R;
+import com.example.androidtvapptutorial.SimpleBackgroundManager;
 
 public class MainFragment extends BrowseSupportFragment {
 
@@ -63,6 +68,8 @@ public class MainFragment extends BrowseSupportFragment {
 
     private void loadRows(){
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        /* Set */
+        setAdapter(mRowsAdapter);
 
         //region GridItemPresenter
         //HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
@@ -161,9 +168,6 @@ public class MainFragment extends BrowseSupportFragment {
 
         mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
         //endregion
-
-        /* Set */
-        setAdapter(mRowsAdapter);
     }
 
     private void setupEventListeners() {

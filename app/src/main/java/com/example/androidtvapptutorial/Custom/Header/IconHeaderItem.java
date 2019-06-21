@@ -1,7 +1,12 @@
-package com.example.androidtvapptutorial.Custom;
+package com.example.androidtvapptutorial.Custom.Header;
 
 import androidx.leanback.widget.HeaderItem;
 
+/**
+ *  @author benedict.b.contawe
+ *  Used with {@link IconHeaderItemPresenter}, it can display the header item with an icon on it.
+ *  @see {https://github.com/benedictcontawe/AndroidTVappTutorial} for more information.
+ */
 public class IconHeaderItem extends HeaderItem {
 
     public static final int ICON_NONE = -1;

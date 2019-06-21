@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.Presenter;
 
 import android.graphics.Color;
 import androidx.leanback.widget.Presenter;

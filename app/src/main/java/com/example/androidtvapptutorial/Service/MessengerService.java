@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.Service;
 
 import android.app.Service;
 import android.content.Intent;
