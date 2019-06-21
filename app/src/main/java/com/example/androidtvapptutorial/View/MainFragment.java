@@ -10,19 +10,26 @@ import android.util.Log;
 import android.widget.Toast;
 import com.example.androidtvapptutorial.Custom.Header.IconHeaderItem;
 import com.example.androidtvapptutorial.Custom.Header.IconHeaderItemPresenter;
+import com.example.androidtvapptutorial.Custom.Row.CustomListRow;
+import com.example.androidtvapptutorial.Custom.Row.CustomListRowPresenter;
 import com.example.androidtvapptutorial.ViewModel.Movie;
 import com.example.androidtvapptutorial.Presenter.CardPresenter;
 import com.example.androidtvapptutorial.Presenter.GridItemPresenter;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
 
+import java.util.ArrayList;
+
 public class MainFragment extends BrowseSupportFragment {
 
     private final String TAG = MainFragment.class.getSimpleName();
 
     private static SimpleBackgroundManager simpleBackgroundManager = null;
-
+    /* Adapter and ListRows */
     private ArrayObjectAdapter mRowsAdapter;
+    private CustomListRow mGridItemListRow;
+    private ArrayList<CustomListRow> mVideoListRowArray;
+    /* Grid row item settings */
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
 
@@ -67,7 +74,8 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void loadRows(){
-        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        //mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
         /* Set */
         setAdapter(mRowsAdapter);
 
@@ -86,7 +94,8 @@ public class MainFragment extends BrowseSupportFragment {
         gridRowAdapter.add("ITEM 1");
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
-        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        //mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
         //endregion
 
         //region CardPresenter
@@ -166,7 +175,13 @@ public class MainFragment extends BrowseSupportFragment {
         Log.i("Movie Information",movie4.toString());
         cardRowAdapter.add(movie4);
 
-        mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
+        Movie movie5 = new Movie();
+        movie4.setTitle("title 5");
+        movie4.setStudio("studio 5");
+        Log.i("Movie Information",movie5.toString());
+        cardRowAdapter.add(movie4);
+
+        mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
         //endregion
     }
 
