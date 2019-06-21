@@ -27,8 +27,8 @@ public class MainFragment extends BrowseSupportFragment {
     private static SimpleBackgroundManager simpleBackgroundManager = null;
     /* Adapter and ListRows */
     private ArrayObjectAdapter mRowsAdapter;
-    private CustomListRow mGridItemListRow;
-    private ArrayList<CustomListRow> mVideoListRowArray;
+    //private CustomListRow mGridItemListRow;
+    //private ArrayList<CustomListRow> mVideoListRowArray;
     /* Grid row item settings */
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
@@ -45,6 +45,8 @@ public class MainFragment extends BrowseSupportFragment {
         loadRows();
 
         setupEventListeners();
+
+        prepareEntranceTransition();
     }
 
     private void prepareBackgroundManager(){
@@ -65,23 +67,30 @@ public class MainFragment extends BrowseSupportFragment {
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         // set search icon color
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
-        setHeaderPresenterSelector(new PresenterSelector() {
+        /*setHeaderPresenterSelector(new PresenterSelector() {
             @Override
             public Presenter getPresenter(Object o) {
                 return new IconHeaderItemPresenter();
             }
-        });
+        });*/
     }
 
     private void loadRows(){
-        //mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-        mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
+
+        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        //mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
         /* Set */
         setAdapter(mRowsAdapter);
 
+        //mRowsAdapter.add(new SectionRow(new IconHeaderItem(0,"USB")));
+
+        mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
+
+        mRowsAdapter.add(new DividerRow());
+
         //region GridItemPresenter
-        //HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
-        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(0, "GridItemPresenter",R.drawable.ic_flash_drive);
+        HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        //IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(1, "GridItemPresenter",R.drawable.ic_flash_drive);
 
         GridItemPresenter mGridPresenter;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -94,12 +103,15 @@ public class MainFragment extends BrowseSupportFragment {
         gridRowAdapter.add("ITEM 1");
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
-        //mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
-        mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
+
+        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        //mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
         //endregion
 
         //region CardPresenter
-        IconHeaderItem cardPresenterHeader = new IconHeaderItem(1, "CardPresenter",R.drawable.ic_flash_drive);
+        HeaderItem cardPresenterHeader = new HeaderItem(2, "CardPresenter");
+        //IconHeaderItem cardPresenterHeader = new IconHeaderItem(2, "CardPresenter",R.drawable.ic_flash_drive);
+
         CardPresenter cardPresenter = new CardPresenter();
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
@@ -181,8 +193,11 @@ public class MainFragment extends BrowseSupportFragment {
         Log.i("Movie Information",movie5.toString());
         cardRowAdapter.add(movie4);
 
-        mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
+        mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
+        //mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
         //endregion
+
+        mRowsAdapter.add(new DividerRow());
     }
 
     private void setupEventListeners() {
