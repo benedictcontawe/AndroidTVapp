@@ -4,7 +4,6 @@ import androidx.leanback.widget.HeaderItem;
 
 public class IconHeaderItem extends HeaderItem {
 
-    private static final String TAG = IconHeaderItem.class.getSimpleName();
     public static final int ICON_NONE = -1;
 
     /** Hold an icon resource id */

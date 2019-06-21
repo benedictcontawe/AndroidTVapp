@@ -2,19 +2,17 @@ package com.example.androidtvapptutorial.Custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.leanback.widget.ListRow;
-import androidx.leanback.widget.Presenter;
-import androidx.leanback.widget.RowHeaderPresenter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.leanback.widget.ListRow;
+import androidx.leanback.widget.Presenter;
+import androidx.leanback.widget.RowHeaderPresenter;
 import com.example.androidtvapptutorial.R;
 
 public class IconHeaderItemPresenter extends RowHeaderPresenter {
-
-    private static final String TAG = IconHeaderItemPresenter.class.getSimpleName();
 
     private float mUnselectedAlpha;
 

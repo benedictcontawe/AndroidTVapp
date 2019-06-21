@@ -8,6 +8,7 @@ import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
 import android.util.Log;
 import android.widget.Toast;
+import com.example.androidtvapptutorial.Custom.IconHeaderItem;
 import com.example.androidtvapptutorial.Custom.IconHeaderItemPresenter;
 
 public class MainFragment extends BrowseSupportFragment {
@@ -52,21 +53,20 @@ public class MainFragment extends BrowseSupportFragment {
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         // set search icon color
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
-        /*
         setHeaderPresenterSelector(new PresenterSelector() {
             @Override
             public Presenter getPresenter(Object o) {
                 return new IconHeaderItemPresenter();
             }
         });
-        */
     }
 
     private void loadRows(){
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
 
         //region GridItemPresenter
-        HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        //HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(0, "GridItemPresenter",R.drawable.ic_flash_drive);
 
         GridItemPresenter mGridPresenter;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -83,7 +83,7 @@ public class MainFragment extends BrowseSupportFragment {
         //endregion
 
         //region CardPresenter
-        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
+        IconHeaderItem cardPresenterHeader = new IconHeaderItem(1, "CardPresenter",R.drawable.ic_flash_drive);
         CardPresenter cardPresenter = new CardPresenter();
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
