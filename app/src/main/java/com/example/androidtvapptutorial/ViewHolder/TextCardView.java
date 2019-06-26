@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.ViewHolder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,15 +9,15 @@ import com.example.androidtvapptutorial.DataModel.MediaData;
 public class TextCardView extends BaseCardView {
 
     public TextCardView(Context context) {
-        super(context, null, R.style.TextCardStyle);
-        LayoutInflater.from(getContext()).inflate(R.layout.item_simple_card, this);
+        super(context, null, com.example.androidtvapptutorial.R.style.TextCardStyle);
+        LayoutInflater.from(getContext()).inflate(com.example.androidtvapptutorial.R.layout.item_simple_card, this);
         setFocusable(true);
         setFocusableInTouchMode(true);
     }
 
     public void updateUi(MediaData mediaCategory) {
-        TextView textTitle = findViewById(R.id.text_title);
-        TextView textDescription = findViewById(R.id.text_description);
+        TextView textTitle = findViewById(com.example.androidtvapptutorial.R.id.text_title);
+        TextView textDescription = findViewById(com.example.androidtvapptutorial.R.id.text_description);
 
         textTitle.setText(mediaCategory.getTitle());
         if (mediaCategory.getType() == MediaData.Type.MUSIC) {

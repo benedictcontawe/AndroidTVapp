@@ -7,7 +7,7 @@ import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
 import com.example.androidtvapptutorial.DataModel.MediaData;
 import com.example.androidtvapptutorial.DataModel.MediaTitle;
-import com.example.androidtvapptutorial.Presenter.MediaPresenterSelector;
+import com.example.androidtvapptutorial.ViewController.MediaPresenterSelector;
 
 import java.util.ArrayList;
 import java.util.List;

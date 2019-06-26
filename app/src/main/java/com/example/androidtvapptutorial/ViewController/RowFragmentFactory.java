@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial;
+package com.example.androidtvapptutorial.ViewController;
 
 import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment.FragmentFactory;

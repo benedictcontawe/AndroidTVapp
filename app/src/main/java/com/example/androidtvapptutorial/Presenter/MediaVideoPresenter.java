@@ -6,7 +6,7 @@ import androidx.leanback.widget.ImageCardView;
 import com.example.androidtvapptutorial.DataModel.MediaData;
 import com.example.androidtvapptutorial.R;
 
-class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {
+public class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {
 
     public MediaVideoPresenter(Context context) {
         this(context, R.style.DefaultCardTheme);

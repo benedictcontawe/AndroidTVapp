@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
 import com.example.androidtvapptutorial.R;
-import com.example.androidtvapptutorial.RowFragmentFactory;
+import com.example.androidtvapptutorial.ViewController.RowFragmentFactory;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
 
 import java.util.ArrayList;

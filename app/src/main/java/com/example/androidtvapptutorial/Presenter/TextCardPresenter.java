@@ -2,7 +2,7 @@ package com.example.androidtvapptutorial.Presenter;
 
 import android.content.Context;
 import com.example.androidtvapptutorial.DataModel.MediaData;
-import com.example.androidtvapptutorial.TextCardView;
+import com.example.androidtvapptutorial.ViewHolder.TextCardView;
 
 public class TextCardPresenter extends AbstractCardPresenter<TextCardView> {
 
