@@ -1,0 +1,62 @@
+[
+  {
+    "type": "VIDEO",
+    "title": "USB2 VIDEO 1 TITLE",
+    "description": "USB2 VIDEO 1 description",
+    "localImageResource": "card_image_movie_01"
+  },
+  {
+    "type": "VIDEO",
+    "title": "USB2 VIDEO 2 TITLE",
+    "description": "USB2 VIDEO 2 description",
+    "localImageResource": "card_image_movie_02"
+  },
+  {
+    "type": "VIDEO",
+    "title": "USB2 VIDEO 3 TITLE",
+    "description": "USB2 VIDEO 3 description",
+    "localImageResource": "card_image_movie_08"
+  },
+  {
+    "type": "DOC",
+    "title": "USB2 DOC 1 TITLE",
+    "description": "USB2 DOC 1 description",
+    "localImageResource": "card_image_movie_03"
+  },
+  {
+    "type": "DOC",
+    "title": "USB2 DOC 1 TITLE",
+    "description": "USB2 DOC 1 description",
+    "localImageResource": "card_image_movie_07"
+  },
+  {
+    "type": "IMAGE",
+    "title": "USB2 image 1 TITLE",
+    "description": "USB2 image 1 description",
+    "localImageResource": "card_image_movie_04"
+  },
+  {
+    "type": "IMAGE",
+    "title": "USB2 image 2 TITLE",
+    "description": "USB2 image 2 description",
+    "localImageResource": "card_image_movie_05"
+  },
+  {
+    "type": "IMAGE",
+    "title": "USB2 image 3 TITLE",
+    "description": "USB2 image 3 description",
+    "localImageResource": "card_image_movie_06"
+  },
+  {
+    "type": "MUSIC",
+    "title": "USB2 music 1 TITLE",
+    "description": "USB2 music 1 description",
+    "localImageResource": "card_image_movie_09"
+  },
+  {
+    "type": "MUSIC",
+    "title": "USB2 music 2 TITLE",
+    "description": "USB2 music 2 description",
+    "localImageResource": "card_image_movie_09"
+  }
+]

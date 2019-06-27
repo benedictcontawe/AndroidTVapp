@@ -3,33 +3,46 @@ package com.example.androidtvapptutorial.View;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
+import com.example.androidtvapptutorial.DataModel.MediaMountedState;
 import com.example.androidtvapptutorial.R;
+import com.example.androidtvapptutorial.ViewModel.MainViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-
-    //private Intent serviceIntent;
+    private MainViewModel mainViewModel;
+    private List<MediaMountedState> usbInfoList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG,"onCreate");
+        Log.d(MainActivity.class.getSimpleName(),"onCreate");
 
-        //serviceIntent = new Intent(getApplicationContext(),MessengerService.class);
+        //dummy
+        usbInfoList.add(new MediaMountedState(true, "usb1"));
+        usbInfoList.add(new MediaMountedState(true, "usb2"));
+        usbInfoList.add(new MediaMountedState(true, "usb3"));
+        usbInfoList.add(new MediaMountedState(true, "usb4"));
+
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mainViewModel.setUsbInfoList(usbInfoList);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //startService(serviceIntent);
+        Log.d(MainActivity.class.getSimpleName(),"onStart");
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestroy");
-        //stopService(serviceIntent);
+        Log.d(MainActivity.class.getSimpleName(),"onDestroy");
+
     }
 }
