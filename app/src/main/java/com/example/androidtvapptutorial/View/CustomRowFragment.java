@@ -14,25 +14,24 @@ import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileRowFragment extends RowsSupportFragment implements OnItemViewClickedListener {
+public class CustomRowFragment extends RowsSupportFragment implements OnItemViewClickedListener {
 
     public static final class companionObject{
 
-        public static final String ARGUMENT_ITEM_NAME = "Argument Item Name";
+        static final String ARGUMENT_ITEM_NAME = "Argument Item Name";
 
         public static RowsSupportFragment newBundle(String selectedHeaderName) {
             Bundle bundle = new Bundle();
             bundle.putString(ARGUMENT_ITEM_NAME, selectedHeaderName);
 
-            FileRowFragment fileRowFragment = new FileRowFragment();
-            fileRowFragment.setArguments(bundle);
+            CustomRowFragment customRowFragment = new CustomRowFragment();
+            customRowFragment.setArguments(bundle);
 
-            return fileRowFragment;
+            return customRowFragment;
         }
     }
 
     private ArrayObjectAdapter rowsAdapter;
-    private MainViewModel mainViewModel;
     private String selectedUnivarsalSerialBusName;
 
     @Override
@@ -56,13 +55,18 @@ public class FileRowFragment extends RowsSupportFragment implements OnItemViewCl
         rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         setAdapter(rowsAdapter);
 
+        createRows();
+        Log.e(CustomRowFragment.class.getSimpleName(), "loadData()");
+    }
+
+    private void createRows() {
         List<MediaTitle> sampleMediaTitle = new ArrayList<>();
         List<MediaData> mediaDataVideo = new ArrayList<>();
         List<MediaData> mediaDataMusic = new ArrayList<>();
         List<MediaData> mediaDataImage = new ArrayList<>();
         List<MediaData> mediaDataDocuments = new ArrayList<>();
 
-        Log.e(FileRowFragment.class.getSimpleName(), "loadData() Selected Header " + selectedUnivarsalSerialBusName);
+        Log.e(CustomRowFragment.class.getSimpleName(), "loadData() Selected Header " + selectedUnivarsalSerialBusName);
 
         mediaDataVideo.add(new MediaData("video.mp4","video.mp4", MediaData.Type.VIDEO));
         mediaDataVideo.add(new MediaData("video1.mp4", "video.mp4",MediaData.Type.VIDEO));
@@ -95,8 +99,6 @@ public class FileRowFragment extends RowsSupportFragment implements OnItemViewCl
             //rowsAdapter.clear();
             rowsAdapter.add(createCardRow(mediaTitle));
         }
-
-        Log.e(FileRowFragment.class.getSimpleName(), "loadData()");
     }
 
     private Row createCardRow(MediaTitle mediaTitle) {

@@ -63,11 +63,16 @@ public class MainFragment extends BrowseSupportFragment {
             }
         });
         */
-
         prepareEntranceTransition();
     }
 
     private void loadData(){
+        createRows();
+        //After the Fragment finishes the loading data it will execute an entrance transition
+        startEntranceTransition();
+    }
+
+    private void createRows(){
         //Create Array Object Adapter Instance and Set Adapter to Browse Rows
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         setAdapter(mRowsAdapter);
@@ -87,8 +92,5 @@ public class MainFragment extends BrowseSupportFragment {
         }
 
         mRowsAdapter.add(new DividerRow());
-
-        //After the Fragment finishes the loading data it will execute an entrance transition
-        startEntranceTransition();
     }
 }
