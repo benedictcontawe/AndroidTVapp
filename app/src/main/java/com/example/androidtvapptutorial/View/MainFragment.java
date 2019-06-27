@@ -67,16 +67,9 @@ public class MainFragment extends BrowseSupportFragment {
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         // set search icon color
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
-        setHeaderPresenterSelector(new PresenterSelector() {
-            @Override
-            public Presenter getPresenter(Object o) {
-                return new IconHeaderItemPresenter();
-            }
-        });
     }
 
     private void loadRows(){
-
         //mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
         /* Set */
@@ -84,13 +77,12 @@ public class MainFragment extends BrowseSupportFragment {
 
         //mRowsAdapter.add(new SectionRow(new IconHeaderItem(0,"USB")));
 
-        //mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
+        mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
 
-        //mRowsAdapter.add(new DividerRow());
+        mRowsAdapter.add(new DividerRow());
 
         //region GridItemPresenter
-        //HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
-        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(1, "GridItemPresenter",R.drawable.ic_flash_drive);
+        HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
 
         GridItemPresenter mGridPresenter;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -109,8 +101,7 @@ public class MainFragment extends BrowseSupportFragment {
         //endregion
 
         //region CardPresenter
-        //HeaderItem cardPresenterHeader = new HeaderItem(2, "CardPresenter");
-        IconHeaderItem cardPresenterHeader = new IconHeaderItem(2, "CardPresenter",R.drawable.ic_flash_drive);
+        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
 
         CardPresenter cardPresenter = new CardPresenter();
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
@@ -197,7 +188,7 @@ public class MainFragment extends BrowseSupportFragment {
         mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
         //endregion
 
-        //mRowsAdapter.add(new DividerRow());
+        mRowsAdapter.add(new DividerRow());
     }
 
     private void setupEventListeners() {
@@ -219,7 +210,6 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private final class ItemViewClickedListener implements OnItemViewClickedListener {
-        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
                                   RowPresenter.ViewHolder rowViewHolder, Row row) {
