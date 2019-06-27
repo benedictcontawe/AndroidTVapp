@@ -9,6 +9,7 @@ import androidx.leanback.widget.*;
 import com.example.androidtvapptutorial.DataModel.MediaData;
 import com.example.androidtvapptutorial.DataModel.MediaTitle;
 import com.example.androidtvapptutorial.ViewController.MediaPresenterSelector;
+import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class FileRowFragment extends RowsSupportFragment implements OnItemViewCl
     }
 
     private ArrayObjectAdapter rowsAdapter;
+    private MainViewModel mainViewModel;
     private String selectedUnivarsalSerialBusName;
 
     @Override
