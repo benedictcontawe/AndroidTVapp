@@ -1,41 +1,33 @@
 package com.example.androidtvapptutorial.View;
 
-import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
+import android.util.Log;
+import android.widget.Toast;
 //import androidx.leanback.app.BrowseFragment;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
-import android.util.Log;
-import android.widget.Toast;
 import com.example.androidtvapptutorial.Custom.Header.IconHeaderItem;
 import com.example.androidtvapptutorial.Custom.Header.IconHeaderItemPresenter;
 import com.example.androidtvapptutorial.Custom.Row.CustomListRow;
 import com.example.androidtvapptutorial.Custom.Row.CustomListRowPresenter;
-import com.example.androidtvapptutorial.ViewModel.Movie;
 import com.example.androidtvapptutorial.Presenter.CardPresenter;
 import com.example.androidtvapptutorial.Presenter.GridItemPresenter;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
-
-import java.util.ArrayList;
+import com.example.androidtvapptutorial.ViewModel.Movie;
 
 public class MainFragment extends BrowseSupportFragment {
-
-    private final String TAG = MainFragment.class.getSimpleName();
 
     private static SimpleBackgroundManager simpleBackgroundManager = null;
     /* Adapter and ListRows */
     private ArrayObjectAdapter mRowsAdapter;
-    //private CustomListRow mGridItemListRow;
-    //private ArrayList<CustomListRow> mVideoListRowArray;
     /* Grid row item settings */
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        Log.i(TAG, "onActivityCreated");
+        Log.i(MainFragment.class.getSimpleName(), "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
 
         prepareBackgroundManager();
