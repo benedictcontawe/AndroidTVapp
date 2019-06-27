@@ -30,7 +30,7 @@ public class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {
         cardView.setContentText(videoModel.getDescription());
         Glide.with(getContext())
                 .asBitmap()
-                .load(R.drawable.movie)
+                .load(R.drawable.moviex)
                 .into(cardView.getMainImageView());
     }
 }
