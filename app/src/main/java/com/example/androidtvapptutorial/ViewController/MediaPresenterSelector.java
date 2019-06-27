@@ -27,31 +27,6 @@ public class MediaPresenterSelector extends PresenterSelector {
 
     public Presenter getPresenter(Object item) {
         Presenter presenter;
-        /*
-        switch (file.getType()) {
-            case IMAGE:
-                presenter = new MediaImagePresenter(mContext);
-                Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() IMAGE " + file.getTitle());
-                break;
-            case VIDEO:
-                presenter = new MediaVideoPresenter(mContext);
-                Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() VIDEO " + file.getTitle());
-                break;
-            case MUSIC:
-                presenter = new MediaMusicPresenter(mContext);
-                Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() MUSIC " + file.getTitle());
-                break;
-            case DOCUMENT:
-                presenter = new MediaDocumentsPresenter(mContext);
-                Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() DOCUMENT " + file.getTitle());
-                break;
-            default:
-                presenter = new MediaDocumentsPresenter(mContext);
-                Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() DEFAULT " + file.getTitle());
-                break;
-        }
-        return presenter;
-        */
         if (item instanceof ImageModel) {
             presenter = new MediaImagePresenter(mContext);
         } else if (item instanceof VideoModel) {

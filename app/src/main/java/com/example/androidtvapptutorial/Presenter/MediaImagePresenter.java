@@ -3,6 +3,7 @@ package com.example.androidtvapptutorial.Presenter;
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 import androidx.leanback.widget.ImageCardView;
+import com.bumptech.glide.Glide;
 import com.example.androidtvapptutorial.DataModel.ImageModel;
 import com.example.androidtvapptutorial.R;
 
@@ -27,11 +28,9 @@ public class MediaImagePresenter extends AbstractCardPresenter<ImageCardView> {
         cardView.setTag(imageModel);
         cardView.setTitleText(imageModel.getTitle());
         cardView.setContentText(imageModel.getDescription());
-        /*
         Glide.with(getContext())
                 .asBitmap()
                 .load(R.mipmap.ic_launcher)
                 .into(cardView.getMainImageView());
-        */
     }
 }

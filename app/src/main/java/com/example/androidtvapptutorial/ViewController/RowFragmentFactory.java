@@ -11,8 +11,8 @@ public class RowFragmentFactory extends FragmentFactory {
     @Override
     public RowsSupportFragment createFragment(Object rowObj) {
         Row row = (Row) rowObj;
-        Log.e(RowFragmentFactory.class.getSimpleName(), "RowsSupportFragment createFragment: " + row.getHeaderItem().getName());
 
+        Log.e(RowFragmentFactory.class.getSimpleName(), "RowsSupportFragment createFragment: " + row.getHeaderItem().getName());
         return new CustomRowFragment.companionObject().newBundle(row.getHeaderItem().getName());
     }
 }
