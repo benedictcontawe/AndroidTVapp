@@ -4,7 +4,7 @@ import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment.FragmentFactory;
 import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.Row;
-import com.example.androidtvapptutorial.View.CardRowFragment;
+import com.example.androidtvapptutorial.View.FileRowFragment;
 
 public class RowFragmentFactory extends FragmentFactory {
 
@@ -13,6 +13,6 @@ public class RowFragmentFactory extends FragmentFactory {
         Row row = (Row) rowObj;
         Log.e(RowFragmentFactory.class.getSimpleName(), "RowsSupportFragment createFragment: " + row.getHeaderItem().getName());
 
-        return new CardRowFragment.companionObject().newBundle(row.getHeaderItem().getName());
+        return new FileRowFragment.companionObject().newBundle(row.getHeaderItem().getName());
     }
 }
