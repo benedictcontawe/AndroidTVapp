@@ -6,7 +6,7 @@ import android.content.Context;
 import android.util.Log;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.PresenterSelector;
-import com.example.androidtvapptutorial.DataModel.MediaData;
+import com.example.androidtvapptutorial.DataModel.*;
 import com.example.androidtvapptutorial.Presenter.MediaDocumentsPresenter;
 import com.example.androidtvapptutorial.Presenter.MediaImagePresenter;
 import com.example.androidtvapptutorial.Presenter.MediaVideoPresenter;
@@ -26,9 +26,8 @@ public class MediaPresenterSelector extends PresenterSelector {
     }
 
     public Presenter getPresenter(Object item) {
-        MediaData file = (MediaData) item;
-
         Presenter presenter;
+        /*
         switch (file.getType()) {
             case IMAGE:
                 presenter = new MediaImagePresenter(mContext);
@@ -51,6 +50,20 @@ public class MediaPresenterSelector extends PresenterSelector {
                 Log.e(MediaPresenterSelector.class.getSimpleName(),"getPresenter() DEFAULT " + file.getTitle());
                 break;
         }
+        return presenter;
+        */
+        if (item instanceof ImageModel) {
+            presenter = new MediaImagePresenter(mContext);
+        } else if (item instanceof VideoModel) {
+            presenter = new MediaVideoPresenter(mContext);
+        } else if (item instanceof MusicModel) {
+            presenter = new MediaMusicPresenter(mContext);
+        } else if (item instanceof DocumentModel){
+            presenter = new MediaDocumentsPresenter(mContext);
+        } else {
+            presenter = new MediaDocumentsPresenter(mContext);
+        }
+
         return presenter;
     }
 

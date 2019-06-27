@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import androidx.leanback.widget.BaseCardView;
-import com.example.androidtvapptutorial.DataModel.MediaData;
+import com.example.androidtvapptutorial.DataModel.DocumentModel;
+import com.example.androidtvapptutorial.DataModel.VideoModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaDocumentCardView extends BaseCardView {
@@ -16,11 +17,15 @@ public class MediaDocumentCardView extends BaseCardView {
         setFocusableInTouchMode(true);
     }
 
-    public void updateView(MediaData mediaCategory) {
+    public void updateView(Object item) {
         TextView textTitle = findViewById(R.id.text_title);
         //TextView textDescription = findViewById(com.example.androidtvapptutorial.R.id.text_description);
 
-        textTitle.setText(mediaCategory.getTitle());
-        //textDescription.setText(mediaCategory.getDescription());
+        if (item instanceof DocumentModel) {
+            DocumentModel documentModel = (DocumentModel) item;
+
+            textTitle.setText(documentModel.getTitle());
+            //textDescription.setText(videoModel.getDescription());
+        }
     }
 }

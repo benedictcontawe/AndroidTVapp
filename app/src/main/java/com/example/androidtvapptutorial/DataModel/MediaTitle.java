@@ -2,13 +2,13 @@ package com.example.androidtvapptutorial.DataModel;
 
 import java.util.List;
 
-public class MediaTitle {
+public class MediaTitle<T> {
     private String title;
-    private List<MediaData> data;
+    private List<T> datum;
 
-    public MediaTitle(String title, List<MediaData> data) {
+    public MediaTitle(String title, List<T> data) {
         this.title = title;
-        this.data = data;
+        this.datum = data;
     }
 
     public String getTitle() {
@@ -19,11 +19,11 @@ public class MediaTitle {
         this.title = title;
     }
 
-    public List<MediaData> getData() {
-        return data;
+    public List<T> getDatum() {
+        return datum;
     }
 
-    public void setData(List<MediaData> data) {
-        this.data = data;
+    public void setDatum(List<T> datum) {
+        this.datum = datum;
     }
 }

@@ -3,7 +3,7 @@ package com.example.androidtvapptutorial.Presenter;
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 import androidx.leanback.widget.ImageCardView;
-import com.example.androidtvapptutorial.DataModel.MediaData;
+import com.example.androidtvapptutorial.DataModel.VideoModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {
@@ -22,10 +22,11 @@ public class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {
     }
 
     @Override
-    public void onBindViewHolder(MediaData mediaCategory, final ImageCardView cardView) {
-        cardView.setTag(mediaCategory);
-        cardView.setTitleText(mediaCategory.getTitle());
-        cardView.setContentText(mediaCategory.getDescription());
+    public void onBindViewHolder(Object item, final ImageCardView cardView) {
+        VideoModel videoModel = (VideoModel) item;
+        cardView.setTag(videoModel);
+        cardView.setTitleText(videoModel.getTitle());
+        cardView.setContentText(videoModel.getDescription());
         /*
         Glide.with(getContext())
                 .asBitmap()

@@ -1,7 +1,6 @@
 package com.example.androidtvapptutorial.Presenter;
 
 import android.content.Context;
-import com.example.androidtvapptutorial.DataModel.MediaData;
 import com.example.androidtvapptutorial.ViewHolder.MediaMusicCardView;
 
 public class MediaMusicPresenter extends AbstractCardPresenter<MediaMusicCardView> {
@@ -16,7 +15,7 @@ public class MediaMusicPresenter extends AbstractCardPresenter<MediaMusicCardVie
     }
 
     @Override
-    public void onBindViewHolder(MediaData mediaCategory, MediaMusicCardView cardView) {
-        cardView.updateView(mediaCategory);
+    public void onBindViewHolder(Object item, MediaMusicCardView cardView) {
+        cardView.updateView(item);
     }
 }

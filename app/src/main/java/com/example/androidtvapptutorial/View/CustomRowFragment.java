@@ -6,8 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
-import com.example.androidtvapptutorial.DataModel.MediaData;
-import com.example.androidtvapptutorial.DataModel.MediaTitle;
+import com.example.androidtvapptutorial.DataModel.*;
 import com.example.androidtvapptutorial.ViewController.MediaPresenterSelector;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
@@ -61,34 +60,35 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
 
     private void createRows() {
         List<MediaTitle> sampleMediaTitle = new ArrayList<>();
-        List<MediaData> mediaDataVideo = new ArrayList<>();
-        List<MediaData> mediaDataMusic = new ArrayList<>();
-        List<MediaData> mediaDataImage = new ArrayList<>();
-        List<MediaData> mediaDataDocuments = new ArrayList<>();
+        List<VideoModel> mediaDataVideo = new ArrayList<>();
+        List<MusicModel> mediaDataMusic = new ArrayList<>();
+        List<ImageModel> mediaDataImage = new ArrayList<>();
+        List<DocumentModel> mediaDataDocuments = new ArrayList<>();
 
         Log.e(CustomRowFragment.class.getSimpleName(), "loadData() Selected Header " + selectedUnivarsalSerialBusName);
 
-        mediaDataVideo.add(new MediaData("video.mp4","video.mp4", MediaData.Type.VIDEO));
-        mediaDataVideo.add(new MediaData("video1.mp4", "video.mp4",MediaData.Type.VIDEO));
-        mediaDataVideo.add(new MediaData("video2.mp4", "video.mp4",MediaData.Type.VIDEO));
+        mediaDataVideo.add(new VideoModel("video.mp4","video.mp4"));
+        mediaDataVideo.add(new VideoModel("video1.mp4", "video.mp4"));
+        mediaDataVideo.add(new VideoModel("video2.mp4", "video.mp4"));
 
-        mediaDataMusic.add(new MediaData("music1.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music2.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music3.mp3","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.",  MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music4.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music5.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music6.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
-        mediaDataMusic.add(new MediaData("music7.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque.", MediaData.Type.MUSIC));
+        mediaDataMusic.add(new MusicModel("music1.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music2.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music3.mp3","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music4.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music5.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music6.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        mediaDataMusic.add(new MusicModel("music7.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
 
-        mediaDataImage.add(new MediaData("img1.png", "img1.png",MediaData.Type.IMAGE));
-        mediaDataImage.add(new MediaData("img2.png","img1.png", MediaData.Type.IMAGE));
-        mediaDataImage.add(new MediaData("img3.png","img1.png", MediaData.Type.IMAGE));
-        mediaDataImage.add(new MediaData("img4.png","img1.png", MediaData.Type.IMAGE));
+        mediaDataImage.add(new ImageModel("img1.png", "img1.png"));
+        mediaDataImage.add(new ImageModel("img2.png","img1.png"));
+        mediaDataImage.add(new ImageModel("img3.png","img1.png"));
+        mediaDataImage.add(new ImageModel("img4.png","img1.png"));
 
-        mediaDataDocuments.add(new MediaData("Document 1", "",MediaData.Type.DOCUMENT));
-        mediaDataDocuments.add(new MediaData("Document 2","", MediaData.Type.DOCUMENT));
-        mediaDataDocuments.add(new MediaData("Document 3","", MediaData.Type.DOCUMENT));
-        mediaDataDocuments.add(new MediaData("Document 4","", MediaData.Type.DOCUMENT));
+        mediaDataDocuments.add(new DocumentModel("Document 1"));
+        mediaDataDocuments.add(new DocumentModel("Document 2"));
+        mediaDataDocuments.add(new DocumentModel("Document 3"));
+        mediaDataDocuments.add(new DocumentModel("Document 4"));
+        mediaDataDocuments.add(new DocumentModel("Document 5"));
 
         sampleMediaTitle.add(new MediaTitle("Video", mediaDataVideo));
         sampleMediaTitle.add(new MediaTitle("Music", mediaDataMusic));
@@ -104,9 +104,27 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
     private Row createCardRow(MediaTitle mediaTitle) {
         PresenterSelector presenterSelector = new MediaPresenterSelector(getActivity());
         ArrayObjectAdapter adapter = new ArrayObjectAdapter(presenterSelector);
-        for (MediaData mediaData : mediaTitle.getData()) {
-            adapter.add(mediaData);
+
+        for (Object item : mediaTitle.getDatum()) {
+            if (item instanceof ImageModel) {
+                Log.e("createCardRow",((ImageModel) item).getTitle());
+                ImageModel imageModel = (ImageModel) item;
+                adapter.add(imageModel);
+            } else if (item instanceof VideoModel) {
+                Log.e("createCardRow",((VideoModel) item).getTitle());
+                VideoModel videoModel = (VideoModel) item;
+                adapter.add(videoModel);
+            } else if (item instanceof MusicModel) {
+                Log.e("createCardRow",((MusicModel) item).getTitle());
+                MusicModel musicModel = (MusicModel) item;
+                adapter.add(musicModel);
+            } else if (item instanceof DocumentModel) {
+                Log.e("createCardRow",((DocumentModel) item).getTitle());
+                DocumentModel documentModel = (DocumentModel) item;
+                adapter.add(documentModel);
+            }
         }
+
         HeaderItem headerItem = new HeaderItem(mediaTitle.getTitle());
 
         return new ListRow(headerItem, adapter);
@@ -114,7 +132,6 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
 
     @Override
     public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, Row row) {
-        MediaData mediaData = (MediaData) item;
-        Toast.makeText(getActivity(), "Clicked " + mediaData.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Clicked " + row, Toast.LENGTH_SHORT).show();
     }
 }

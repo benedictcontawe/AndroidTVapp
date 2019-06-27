@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import androidx.leanback.widget.BaseCardView;
-import com.example.androidtvapptutorial.DataModel.MediaData;
+import com.example.androidtvapptutorial.DataModel.MusicModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaMusicCardView extends BaseCardView {
@@ -16,11 +16,15 @@ public class MediaMusicCardView extends BaseCardView {
         setFocusableInTouchMode(true);
     }
 
-    public void updateView(MediaData mediaCategory) {
+    public void updateView(Object item) {
         TextView textTitle = findViewById(com.example.androidtvapptutorial.R.id.text_title);
         TextView textDescription = findViewById(com.example.androidtvapptutorial.R.id.text_description);
 
-        textTitle.setText(mediaCategory.getTitle());
-        textDescription.setText(mediaCategory.getDescription());
+        if (item instanceof MusicModel) {
+            MusicModel musicModel = (MusicModel) item;
+
+            textTitle.setText(musicModel.getTitle());
+            textDescription.setText(musicModel.getDescription());
+        }
     }
 }

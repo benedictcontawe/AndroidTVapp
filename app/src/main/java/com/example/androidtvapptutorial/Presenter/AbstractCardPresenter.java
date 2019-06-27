@@ -5,8 +5,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import androidx.leanback.widget.BaseCardView;
 import androidx.leanback.widget.Presenter;
-import com.example.androidtvapptutorial.DataModel.MediaData;
-import com.example.androidtvapptutorial.DataModel.MediaTitle;
 
 /**
  * This abstract, generic class will create and manage the
@@ -17,12 +15,13 @@ import com.example.androidtvapptutorial.DataModel.MediaTitle;
  */
 public abstract class AbstractCardPresenter<T extends BaseCardView> extends Presenter {
 
+    private static final String TAG = "AbstractCardPresenter";
     private Context mContext;
 
     /**
      * @param context The current context.
      */
-    public AbstractCardPresenter(Context context) {
+    AbstractCardPresenter(Context context) {
         mContext = context;
     }
 
@@ -38,8 +37,7 @@ public abstract class AbstractCardPresenter<T extends BaseCardView> extends Pres
 
     @Override
     public final void onBindViewHolder(ViewHolder viewHolder, Object item) {
-        MediaData media = (MediaData) item;
-        onBindViewHolder(media, (T) viewHolder.view);
+        onBindViewHolder(item, (T) viewHolder.view);
     }
 
     @Override
@@ -47,12 +45,12 @@ public abstract class AbstractCardPresenter<T extends BaseCardView> extends Pres
         onUnbindViewHolder((T) viewHolder.view);
     }
 
-    public void onUnbindViewHolder(T cardView) {
+    private void onUnbindViewHolder(T cardView) {
         // Nothing to clean up. Override if necessary.
     }
 
     protected abstract T onCreateView();
 
-    public abstract void onBindViewHolder(MediaData media, T cardView);
+    public abstract void onBindViewHolder(Object item, T cardView);
 
 }
