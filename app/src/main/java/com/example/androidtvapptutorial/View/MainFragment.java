@@ -1,41 +1,31 @@
 package com.example.androidtvapptutorial.View;
 
-import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
+import android.util.Log;
+import android.widget.Toast;
 //import androidx.leanback.app.BrowseFragment;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
-import android.util.Log;
-import android.widget.Toast;
-import com.example.androidtvapptutorial.Custom.Header.IconHeaderItem;
-import com.example.androidtvapptutorial.Custom.Header.IconHeaderItemPresenter;
 import com.example.androidtvapptutorial.Custom.Row.CustomListRow;
-import com.example.androidtvapptutorial.Custom.Row.CustomListRowPresenter;
-import com.example.androidtvapptutorial.ViewModel.Movie;
 import com.example.androidtvapptutorial.Presenter.CardPresenter;
 import com.example.androidtvapptutorial.Presenter.GridItemPresenter;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
+import com.example.androidtvapptutorial.ViewModel.Movie;
 
-import java.util.ArrayList;
 
 public class MainFragment extends BrowseSupportFragment {
-
-    private final String TAG = MainFragment.class.getSimpleName();
 
     private static SimpleBackgroundManager simpleBackgroundManager = null;
     /* Adapter and ListRows */
     private ArrayObjectAdapter mRowsAdapter;
-    //private CustomListRow mGridItemListRow;
-    //private ArrayList<CustomListRow> mVideoListRowArray;
     /* Grid row item settings */
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        Log.i(TAG, "onActivityCreated");
+        Log.i(MainFragment.class.getSimpleName(), "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
 
         prepareBackgroundManager();
@@ -70,15 +60,11 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void loadRows(){
-        //mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-        mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
+        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter()); //mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
         /* Set */
         setAdapter(mRowsAdapter);
 
-        //mRowsAdapter.add(new SectionRow(new IconHeaderItem(0,"USB")));
-
         mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
-
         mRowsAdapter.add(new DividerRow());
 
         //region GridItemPresenter
@@ -96,8 +82,7 @@ public class MainFragment extends BrowseSupportFragment {
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
 
-        //mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
-        mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
+        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter)); //mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
         //endregion
 
         //region CardPresenter
@@ -184,8 +169,7 @@ public class MainFragment extends BrowseSupportFragment {
         Log.i("Movie Information",movie5.toString());
         cardRowAdapter.add(movie4);
 
-        //mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
-        mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
+        mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter)); //mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
         //endregion
 
         mRowsAdapter.add(new DividerRow());
