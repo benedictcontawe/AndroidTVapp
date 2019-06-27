@@ -54,15 +54,15 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void setupUIElements() {
+        // Title Fragment
         // setBadgeDrawable(getActivity().getResources().getDrawable(R.drawable.videos_by_google_banner));
         setTitle("Hello Android TV!"); // Badge, when set, takes precedent
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             setBadgeDrawable(getResources().getDrawable(R.mipmap.videos_by_google_banner,getContext().getTheme()));
         }*/
-        // over title
+        // Header Fragment
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
-
         // set fastLane (or headers) background color
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         // set search icon color
@@ -76,21 +76,12 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void loadRows(){
-
-        //mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         mRowsAdapter = new ArrayObjectAdapter(new CustomListRowPresenter());
         /* Set */
         setAdapter(mRowsAdapter);
 
-        //mRowsAdapter.add(new SectionRow(new IconHeaderItem(0,"USB")));
-
-        //mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
-
-        //mRowsAdapter.add(new DividerRow());
-
         //region GridItemPresenter
-        //HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
-        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(1, "GridItemPresenter",R.drawable.ic_flash_drive);
+        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(0, "GridItemPresenter",R.drawable.ic_flash_drive);
 
         GridItemPresenter mGridPresenter;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -104,58 +95,14 @@ public class MainFragment extends BrowseSupportFragment {
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
 
-        //mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
         mRowsAdapter.add(new CustomListRow(gridItemPresenterHeader, gridRowAdapter,2));
         //endregion
 
         //region CardPresenter
-        //HeaderItem cardPresenterHeader = new HeaderItem(2, "CardPresenter");
-        IconHeaderItem cardPresenterHeader = new IconHeaderItem(2, "CardPresenter",R.drawable.ic_flash_drive);
+        IconHeaderItem cardPresenterHeader = new IconHeaderItem(1, "CardPresenter",R.drawable.ic_flash_drive);
 
         CardPresenter cardPresenter = new CardPresenter();
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
-
-        /*
-        Movie movie = new Movie();
-        movie.setId(0);
-        movie.setTitle("title 1");
-        movie.setStudio("sub title 1");
-        //movie.setCardImageUrl("");
-        Log.i("Movie Information",movie.toString());
-        cardRowAdapter.add(movie);
-
-        movie.setId(1);
-        movie.setTitle("title 2");
-        movie.setStudio("sub title 2");
-        //movie.setCardImageUrl("");
-        Log.i("Movie Information",movie.toString());
-        cardRowAdapter.add(movie);
-
-        movie.setId(2);
-        movie.setTitle("title 3");
-        movie.setStudio("sub title 3");
-        //movie.setCardImageUrl("");
-        Log.i("Movie Information",movie.toString());
-        cardRowAdapter.add(movie);
-
-        movie.setId(3);
-        movie.setTitle("title 4");
-        movie.setStudio("sub title 4");
-        //movie.setCardImageUrl("");
-        Log.i("Movie Information",movie.toString());
-        cardRowAdapter.add(movie);
-        */
-
-        /*
-        for(int i=0; i<10; i++) {
-            Movie movie = new Movie();
-            movie.setTitle("title" + i);
-            movie.setStudio("studio" + i);
-            //movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg");
-            Log.i("Movie Information",movie.toString());
-            cardRowAdapter.add(movie);
-        }
-        */
 
         Movie movie = new Movie();
         movie.setTitle("title 0");
@@ -196,8 +143,6 @@ public class MainFragment extends BrowseSupportFragment {
         //mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
         mRowsAdapter.add(new CustomListRow(cardPresenterHeader, cardRowAdapter,3));
         //endregion
-
-        //mRowsAdapter.add(new DividerRow());
     }
 
     private void setupEventListeners() {
@@ -219,7 +164,6 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private final class ItemViewClickedListener implements OnItemViewClickedListener {
-        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
                                   RowPresenter.ViewHolder rowViewHolder, Row row) {
