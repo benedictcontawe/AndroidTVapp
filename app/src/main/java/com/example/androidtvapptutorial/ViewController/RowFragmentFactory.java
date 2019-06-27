@@ -12,6 +12,7 @@ public class RowFragmentFactory extends FragmentFactory {
     public RowsSupportFragment createFragment(Object rowObj) {
         Row row = (Row) rowObj;
         Log.e(RowFragmentFactory.class.getSimpleName(), "RowsSupportFragment createFragment: " + row.getHeaderItem().getName());
-        return new CardRowFragment();
+
+        return new CardRowFragment.companionObject().newBundle(row.getHeaderItem().getName());
     }
 }

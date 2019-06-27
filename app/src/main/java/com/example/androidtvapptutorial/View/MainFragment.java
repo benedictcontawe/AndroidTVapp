@@ -15,8 +15,6 @@ import java.util.List;
 
 public class MainFragment extends BrowseSupportFragment {
 
-    private final String TAG = MainFragment.class.getSimpleName();
-
     private static SimpleBackgroundManager simpleBackgroundManager = null;
 
     private ArrayObjectAdapter mRowsAdapter;
@@ -25,7 +23,7 @@ public class MainFragment extends BrowseSupportFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        Log.i(TAG, "onActivityCreated");
+        Log.e(MainFragment.class.getSimpleName(), "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
 
         prepareBackgroundManager();

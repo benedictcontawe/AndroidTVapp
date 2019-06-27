@@ -1,6 +1,7 @@
 package com.example.androidtvapptutorial.View;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.leanback.app.RowsSupportFragment;
@@ -14,12 +15,32 @@ import java.util.List;
 
 public class CardRowFragment extends RowsSupportFragment implements OnItemViewClickedListener {
 
+    public static final class companionObject{
+
+        public static final String ARGUMENT_ITEM_NAME = "Argument Item Name";
+
+        public static RowsSupportFragment newBundle(String selectedHeaderName) {
+            Bundle bundle = new Bundle();
+            bundle.putString(ARGUMENT_ITEM_NAME, selectedHeaderName);
+
+            CardRowFragment cardRowFragment = new CardRowFragment();
+            cardRowFragment.setArguments(bundle);
+
+            return cardRowFragment;
+        }
+    }
 
     private ArrayObjectAdapter rowsAdapter;
+    private String selectedUnivarsalSerialBusName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            selectedUnivarsalSerialBusName = bundle.getString(companionObject.ARGUMENT_ITEM_NAME);
+        }
 
         setOnItemViewClickedListener(this);
     }
@@ -39,6 +60,8 @@ public class CardRowFragment extends RowsSupportFragment implements OnItemViewCl
         List<MediaData> mediaDataVideo = new ArrayList<>();
         List<MediaData> mediaDataMusic = new ArrayList<>();
         List<MediaData> mediaDataImage = new ArrayList<>();
+
+        Log.e(CardRowFragment.class.getSimpleName(), "loadData() Selected Header " + selectedUnivarsalSerialBusName);
 
         mediaDataVideo.add(new MediaData("video.mp4","video.mp4", MediaData.Type.VIDEO));
         mediaDataVideo.add(new MediaData("video1.mp4", "video.mp4",MediaData.Type.VIDEO));
@@ -62,8 +85,11 @@ public class CardRowFragment extends RowsSupportFragment implements OnItemViewCl
         sampleMediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
 
         for (MediaTitle mediaTitle : sampleMediaTitle) {
+            //rowsAdapter.clear();
             rowsAdapter.add(createCardRow(mediaTitle));
         }
+
+        Log.e(CardRowFragment.class.getSimpleName(), "loadData()");
     }
 
     private Row createCardRow(MediaTitle mediaTitle) {
