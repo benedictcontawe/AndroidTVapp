@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.androidtvapptutorial.Model.DataModel.*;
-import com.example.androidtvapptutorial.Model.Repository.Repository;
+import com.example.androidtvapptutorial.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
