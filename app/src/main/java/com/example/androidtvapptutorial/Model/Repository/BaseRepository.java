@@ -13,7 +13,7 @@ public interface BaseRepository {
 
     public void delete(MediaEntity mediaEntity);
 
-    public void deleteAll(MediaEntity mediaEntity);
+    public void deleteAll();
 
     public void getFirst(MediaEntity mediaEntity);
 

@@ -21,6 +21,9 @@ public interface MediaDAO<T> {
     @Query("DELETE FROM media_source")
     void deleteAll();
 
+    //@Query("SELECT * FROM media_source WHERE id = ")
+    //LiveData<String> getFirst(String find);
+
     @Query("SELECT * FROM media_source ORDER BY id DESC")
     LiveData<List<MediaEntity>> getAll();
 }

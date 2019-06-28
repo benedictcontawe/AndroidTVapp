@@ -36,8 +36,8 @@ public class MediaRepository implements BaseRepository {
     }
 
     @Override
-    public void deleteAll(MediaEntity mediaEntity) {
-        new deleteAllMediaAsyncTask(mediaDAO).execute(mediaEntity);
+    public void deleteAll() {
+        new deleteAllMediaAsyncTask(mediaDAO).execute();
     }
 
     @Override
