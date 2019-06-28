@@ -1,10 +1,10 @@
-package com.example.androidtvapptutorial.Presenter;
+package com.example.androidtvapptutorial.View.Presenter;
 
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 import androidx.leanback.widget.ImageCardView;
 import com.bumptech.glide.Glide;
-import com.example.androidtvapptutorial.DataModel.ImageModel;
+import com.example.androidtvapptutorial.Model.Data.ImageModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaImagePresenter extends AbstractCardPresenter<ImageCardView> {

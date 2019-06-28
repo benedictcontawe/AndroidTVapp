@@ -1,8 +1,8 @@
-package com.example.androidtvapptutorial.Repository;
+package com.example.androidtvapptutorial.Model.Repository;
 
 import android.content.Context;
 import androidx.lifecycle.MutableLiveData;
-import com.example.androidtvapptutorial.DataModel.*;
+import com.example.androidtvapptutorial.Model.Data.*;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -29,18 +29,18 @@ public class Repository {
         }
     }
 
-    public void setUSBInfoList(List<MediaStateModel> usbInfoList){
+    public void setUSBInfoList(List<MediaRequestModel> usbInfoList){
         MediaResponseModel[] mediaResponseModels;
         Map<String, List<MediaTitle>> usbMap = new HashMap<>();
 
-        for (MediaStateModel mediaStateModel : usbInfoList) {
+        for (MediaRequestModel mediaRequestModel : usbInfoList) {
             List<MediaTitle> mediaTitles = new ArrayList<>();
             List<ImageModel> imageFiles = new ArrayList<>();
             List<VideoModel> videoFiles = new ArrayList<>();
             List<MusicModel> musicFiles = new ArrayList<>();
             List<DocumentModel> docFiles = new ArrayList<>();
 
-            String fromJsonFile = jsonFileReader.readJsonFile(mediaStateModel.getFolderName());
+            String fromJsonFile = jsonFileReader.readJsonFile(mediaRequestModel.getFolderName());
             mediaResponseModels = new Gson().fromJson(fromJsonFile, MediaResponseModel[].class);
 
             for (MediaResponseModel item : mediaResponseModels) {
@@ -65,7 +65,7 @@ public class Repository {
            mediaTitles.add(new MediaTitle<>("MUSIC", musicFiles));
            mediaTitles.add(new MediaTitle<>("DOCUMENT", docFiles));
 
-            usbMap.put(mediaStateModel.getFolderName(), mediaTitles);
+            usbMap.put(mediaRequestModel.getFolderName(), mediaTitles);
         }
         usbInfoMap.setValue(usbMap);
     }

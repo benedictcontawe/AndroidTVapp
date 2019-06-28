@@ -44,6 +44,7 @@ dependencies {
 
     //Android X Life Cycle Components
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation "androidx.room:room-runtime:2.1.0"
 
     //Android Unit Test and U.I. Test Library
     testImplementation 'junit:junit:4.12'

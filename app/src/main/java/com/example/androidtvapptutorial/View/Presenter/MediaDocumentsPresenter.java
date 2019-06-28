@@ -1,7 +1,7 @@
-package com.example.androidtvapptutorial.Presenter;
+package com.example.androidtvapptutorial.View.Presenter;
 
 import android.content.Context;
-import com.example.androidtvapptutorial.ViewHolder.MediaDocumentCardView;
+import com.example.androidtvapptutorial.View.ViewHolder.MediaDocumentCardView;
 
 public class MediaDocumentsPresenter extends AbstractCardPresenter<MediaDocumentCardView> {
 

@@ -1,16 +1,18 @@
-package com.example.androidtvapptutorial.ViewController;
+package com.example.androidtvapptutorial.View.ViewController;
 
 //import android.graphics.Bitmap;
 //import android.graphics.drawable.BitmapDrawable;
 import android.content.Context;
-import android.util.Log;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.PresenterSelector;
-import com.example.androidtvapptutorial.DataModel.*;
-import com.example.androidtvapptutorial.Presenter.MediaDocumentsPresenter;
-import com.example.androidtvapptutorial.Presenter.MediaImagePresenter;
-import com.example.androidtvapptutorial.Presenter.MediaVideoPresenter;
-import com.example.androidtvapptutorial.Presenter.MediaMusicPresenter;
+import com.example.androidtvapptutorial.Model.Data.DocumentModel;
+import com.example.androidtvapptutorial.Model.Data.ImageModel;
+import com.example.androidtvapptutorial.Model.Data.MusicModel;
+import com.example.androidtvapptutorial.Model.Data.VideoModel;
+import com.example.androidtvapptutorial.View.Presenter.MediaDocumentsPresenter;
+import com.example.androidtvapptutorial.View.Presenter.MediaImagePresenter;
+import com.example.androidtvapptutorial.View.Presenter.MediaVideoPresenter;
+import com.example.androidtvapptutorial.View.Presenter.MediaMusicPresenter;
 //import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Target;

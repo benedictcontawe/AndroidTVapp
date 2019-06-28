@@ -1,11 +1,11 @@
-package com.example.androidtvapptutorial.DataModel;
+package com.example.androidtvapptutorial.Model.Data;
 
-public class MediaStateModel {
+public class MediaRequestModel {
 
     private boolean isMounted;
     private String folderName;
 
-    public MediaStateModel(boolean isMounted, String folderName) {
+    public MediaRequestModel(boolean isMounted, String folderName) {
         this.isMounted = isMounted;
         this.folderName = folderName;
     }

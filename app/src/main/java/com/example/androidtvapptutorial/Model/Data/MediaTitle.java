@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial.DataModel;
+package com.example.androidtvapptutorial.Model.Data;
 
 import java.util.List;
 

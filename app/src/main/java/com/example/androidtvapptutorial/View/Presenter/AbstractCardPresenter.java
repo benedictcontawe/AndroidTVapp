@@ -1,5 +1,5 @@
 
-package com.example.androidtvapptutorial.Presenter;
+package com.example.androidtvapptutorial.View.Presenter;
 
 import android.content.Context;
 import android.view.ViewGroup;

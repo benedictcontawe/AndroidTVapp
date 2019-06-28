@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial.Repository;
+package com.example.androidtvapptutorial.Model.Repository;
 
 import android.content.Context;
 import android.util.Log;
