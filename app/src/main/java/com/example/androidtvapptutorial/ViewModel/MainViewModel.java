@@ -7,8 +7,7 @@ import androidx.leanback.widget.HeaderItem;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
-import com.example.androidtvapptutorial.Model.Data.*;
+import com.example.androidtvapptutorial.Model.DataModel.*;
 import com.example.androidtvapptutorial.Model.Repository.Repository;
 
 import java.util.ArrayList;

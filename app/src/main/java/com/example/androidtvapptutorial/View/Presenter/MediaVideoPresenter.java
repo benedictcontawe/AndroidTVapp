@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.ContextThemeWrapper;
 import androidx.leanback.widget.ImageCardView;
 import com.bumptech.glide.Glide;
-import com.example.androidtvapptutorial.Model.Data.VideoModel;
+import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaVideoPresenter extends AbstractCardPresenter<ImageCardView> {

@@ -8,7 +8,7 @@ import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import com.example.androidtvapptutorial.Model.Data.*;
+import com.example.androidtvapptutorial.Model.DataModel.*;
 import com.example.androidtvapptutorial.View.ViewController.MediaPresenterSelector;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 

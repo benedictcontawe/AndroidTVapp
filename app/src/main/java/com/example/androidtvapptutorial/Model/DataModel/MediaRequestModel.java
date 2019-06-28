@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial.Model.Data;
+package com.example.androidtvapptutorial.Model.DataModel;
 
 public class MediaRequestModel {
 

@@ -1,11 +1,11 @@
-package com.example.androidtvapptutorial.Model.Data;
+package com.example.androidtvapptutorial.Model.DataModel;
 
-public class ImageModel {
+public class MusicModel {
 
     private String title;
     private String description;
 
-    public ImageModel(String title, String description) {
+    public MusicModel(String title, String description){
         this.title = title;
         this.description = description;
     }

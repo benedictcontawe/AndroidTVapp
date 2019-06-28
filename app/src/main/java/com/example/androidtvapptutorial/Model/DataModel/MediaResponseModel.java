@@ -1,4 +1,4 @@
-package com.example.androidtvapptutorial.Model.Data;
+package com.example.androidtvapptutorial.Model.DataModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import androidx.leanback.widget.BaseCardView;
-import com.example.androidtvapptutorial.Model.Data.MusicModel;
+import com.example.androidtvapptutorial.Model.DataModel.MusicModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaMusicCardView extends BaseCardView {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import androidx.leanback.widget.BaseCardView;
-import com.example.androidtvapptutorial.Model.Data.DocumentModel;
+import com.example.androidtvapptutorial.Model.DataModel.DocumentModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaDocumentCardView extends BaseCardView {

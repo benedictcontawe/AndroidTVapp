@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
-import com.example.androidtvapptutorial.Model.Data.MediaRequestModel;
+import com.example.androidtvapptutorial.Model.DataModel.MediaRequestModel;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
