@@ -29,18 +29,18 @@ public class Repository {
         }
     }
 
-    public void setUSBInfoList(List<MediaMountedState> usbInfoList){
+    public void setUSBInfoList(List<MediaStateModel> usbInfoList){
         MediaResponseModel[] mediaResponseModels;
         Map<String, List<MediaTitle>> usbMap = new HashMap<>();
 
-        for (MediaMountedState mediaMountedState : usbInfoList) {
+        for (MediaStateModel mediaStateModel : usbInfoList) {
             List<MediaTitle> mediaTitles = new ArrayList<>();
             List<ImageModel> imageFiles = new ArrayList<>();
             List<VideoModel> videoFiles = new ArrayList<>();
             List<MusicModel> musicFiles = new ArrayList<>();
             List<DocumentModel> docFiles = new ArrayList<>();
 
-            String fromJsonFile = jsonFileReader.readJsonFile(mediaMountedState.getFolderName());
+            String fromJsonFile = jsonFileReader.readJsonFile(mediaStateModel.getFolderName());
             mediaResponseModels = new Gson().fromJson(fromJsonFile, MediaResponseModel[].class);
 
             for (MediaResponseModel item : mediaResponseModels) {
@@ -65,7 +65,7 @@ public class Repository {
            mediaTitles.add(new MediaTitle<>("MUSIC", musicFiles));
            mediaTitles.add(new MediaTitle<>("DOCUMENT", docFiles));
 
-            usbMap.put(mediaMountedState.getFolderName(), mediaTitles);
+            usbMap.put(mediaStateModel.getFolderName(), mediaTitles);
         }
         usbInfoMap.setValue(usbMap);
     }

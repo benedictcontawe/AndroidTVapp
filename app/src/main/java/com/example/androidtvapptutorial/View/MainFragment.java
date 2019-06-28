@@ -4,29 +4,31 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.*;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.ViewController.RowFragmentFactory;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
+import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 //import androidx.leanback.app.BrowseFragment;
 
 public class MainFragment extends BrowseSupportFragment {
 
+    private ArrayObjectAdapter rowsAdapter;
+    private MainViewModel mainViewModel;
     private static SimpleBackgroundManager simpleBackgroundManager = null;
-
-    private ArrayObjectAdapter mRowsAdapter;
-    private static final int GRID_ITEM_WIDTH = 300;
-    private static final int GRID_ITEM_HEIGHT = 200;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         Log.e(MainFragment.class.getSimpleName(), "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
 
-        prepareBackgroundManager();
+        mainViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
+
+        //prepareBackgroundManager();
 
         setupUIElements();
 
@@ -67,20 +69,19 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void loadData(){
+        //Create Array Object Adapter Instance and Set Adapter to Browse Rows
+        rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        setAdapter(rowsAdapter);
+
         createRows();
         //After the Fragment finishes the loading data it will execute an entrance transition
         startEntranceTransition();
     }
 
     private void createRows(){
-        //Create Array Object Adapter Instance and Set Adapter to Browse Rows
-        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-        setAdapter(mRowsAdapter);
-
-
-        mRowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
-        mRowsAdapter.add(new DividerRow());
-
+        rowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
+        rowsAdapter.add(new DividerRow());
+        /*
         //Create List of HeaderItem Data and add to the Instance of Array Object Adapter
         List<HeaderItem> dummyHeaders = new ArrayList<>();
         dummyHeaders.add(new HeaderItem(0, "USB All"));
@@ -88,9 +89,19 @@ public class MainFragment extends BrowseSupportFragment {
         dummyHeaders.add(new HeaderItem(1, "USB2"));
         dummyHeaders.add(new HeaderItem(2, "USB3"));
         for (HeaderItem header : dummyHeaders) {
-            mRowsAdapter.add(new PageRow(header));
+            rowsAdapter.add(new PageRow(header));
         }
+        */
+        mainViewModel.getHeaders().observe(this, new Observer<Set<String>>() {
+            @Override
+            public void onChanged(Set<String> strings) {
+                for (String header : strings){
+                    HeaderItem headerItem = new HeaderItem(header);
+                    rowsAdapter.add(new PageRow(headerItem));
+                }
+            }
+        });
 
-        mRowsAdapter.add(new DividerRow());
+        rowsAdapter.add(new DividerRow());
     }
 }

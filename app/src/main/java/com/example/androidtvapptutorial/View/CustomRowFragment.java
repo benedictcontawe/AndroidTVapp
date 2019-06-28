@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
+import androidx.lifecycle.ViewModelProviders;
 import com.example.androidtvapptutorial.DataModel.*;
 import com.example.androidtvapptutorial.ViewController.MediaPresenterSelector;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
@@ -31,6 +32,7 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
     }
 
     private ArrayObjectAdapter rowsAdapter;
+    private MainViewModel mainViewModel;
     private String selectedUnivarsalSerialBusName;
 
     @Override
@@ -46,19 +48,27 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        mainViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
         loadData();
         getMainFragmentAdapter().getFragmentHost().notifyDataReady(getMainFragmentAdapter());
     }
 
     private void loadData() {
+        Log.e(CustomRowFragment.class.getSimpleName(), "loadData()");
         rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         setAdapter(rowsAdapter);
 
         createRows();
-        Log.e(CustomRowFragment.class.getSimpleName(), "loadData()");
     }
 
     private void createRows() {
+        mainViewModel.getUsbFilesList(selectedUnivarsalSerialBusName).observe(this, usbFileList -> {
+            for (MediaTitle mediaTitle : usbFileList) {
+                rowsAdapter.add(createCardRow(mediaTitle));
+            }
+        });
+        /*
         List<MediaTitle> sampleMediaTitle = new ArrayList<>();
         List<VideoModel> mediaDataVideo = new ArrayList<>();
         List<MusicModel> mediaDataMusic = new ArrayList<>();
@@ -99,6 +109,7 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
             //rowsAdapter.clear();
             rowsAdapter.add(createCardRow(mediaTitle));
         }
+        */
     }
 
     private Row createCardRow(MediaTitle mediaTitle) {
