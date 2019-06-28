@@ -6,12 +6,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.leanback.app.RowsSupportFragment;
 import androidx.leanback.widget.*;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import com.example.androidtvapptutorial.DataModel.*;
-import com.example.androidtvapptutorial.ViewController.MediaPresenterSelector;
+import com.example.androidtvapptutorial.Model.Data.*;
+import com.example.androidtvapptutorial.View.ViewController.MediaPresenterSelector;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomRowFragment extends RowsSupportFragment implements OnItemViewClickedListener {
@@ -63,53 +63,15 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
     }
 
     private void createRows() {
-        mainViewModel.getUsbFilesList(selectedUnivarsalSerialBusName).observe(this, usbFileList -> {
-            for (MediaTitle mediaTitle : usbFileList) {
-                rowsAdapter.add(createCardRow(mediaTitle));
+        mainViewModel.getRows(selectedUnivarsalSerialBusName).observe(this, new Observer<List<MediaTitle>>() {
+            @Override
+            public void onChanged(List<MediaTitle> mediaTitles) {
+                for (MediaTitle mediaTitle : mediaTitles) {
+                    //rowsAdapter.clear();
+                    rowsAdapter.add(createCardRow(mediaTitle));
+                }
             }
         });
-        /*
-        List<MediaTitle> sampleMediaTitle = new ArrayList<>();
-        List<VideoModel> mediaDataVideo = new ArrayList<>();
-        List<MusicModel> mediaDataMusic = new ArrayList<>();
-        List<ImageModel> mediaDataImage = new ArrayList<>();
-        List<DocumentModel> mediaDataDocuments = new ArrayList<>();
-
-        Log.e(CustomRowFragment.class.getSimpleName(), "loadData() Selected Header " + selectedUnivarsalSerialBusName);
-
-        mediaDataVideo.add(new VideoModel("video.mp4","video.mp4"));
-        mediaDataVideo.add(new VideoModel("video1.mp4", "video.mp4"));
-        mediaDataVideo.add(new VideoModel("video2.mp4", "video.mp4"));
-
-        mediaDataMusic.add(new MusicModel("music1.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music2.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music3.mp3","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music4.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music5.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music6.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music7.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-
-        mediaDataImage.add(new ImageModel("img1.png", "img1.png"));
-        mediaDataImage.add(new ImageModel("img2.png","img1.png"));
-        mediaDataImage.add(new ImageModel("img3.png","img1.png"));
-        mediaDataImage.add(new ImageModel("img4.png","img1.png"));
-
-        mediaDataDocuments.add(new DocumentModel("Document 1"));
-        mediaDataDocuments.add(new DocumentModel("Document 2"));
-        mediaDataDocuments.add(new DocumentModel("Document 3"));
-        mediaDataDocuments.add(new DocumentModel("Document 4"));
-        mediaDataDocuments.add(new DocumentModel("Document 5"));
-
-        sampleMediaTitle.add(new MediaTitle("Video", mediaDataVideo));
-        sampleMediaTitle.add(new MediaTitle("Music", mediaDataMusic));
-        sampleMediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
-        sampleMediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
-
-        for (MediaTitle mediaTitle : sampleMediaTitle) {
-            //rowsAdapter.clear();
-            rowsAdapter.add(createCardRow(mediaTitle));
-        }
-        */
     }
 
     private Row createCardRow(MediaTitle mediaTitle) {

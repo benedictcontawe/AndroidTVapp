@@ -7,10 +7,11 @@ import androidx.leanback.widget.*;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.androidtvapptutorial.R;
-import com.example.androidtvapptutorial.ViewController.RowFragmentFactory;
+import com.example.androidtvapptutorial.View.ViewController.RowFragmentFactory;
 import com.example.androidtvapptutorial.SimpleBackgroundManager;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
+import java.util.List;
 import java.util.Set;
 
 //import androidx.leanback.app.BrowseFragment;
@@ -80,16 +81,6 @@ public class MainFragment extends BrowseSupportFragment {
 
     private void createRows(){
         /*
-        //Create List of HeaderItem Data and add to the Instance of Array Object Adapter
-        List<HeaderItem> dummyHeaders = new ArrayList<>();
-        dummyHeaders.add(new HeaderItem(0, "USB All"));
-        dummyHeaders.add(new HeaderItem(0, "USB1"));
-        dummyHeaders.add(new HeaderItem(1, "USB2"));
-        dummyHeaders.add(new HeaderItem(2, "USB3"));
-        for (HeaderItem header : dummyHeaders) {
-            rowsAdapter.add(new PageRow(header));
-        }
-        */
         mainViewModel.getHeaders().observe(this, new Observer<Set<String>>() {
             @Override
             public void onChanged(Set<String> strings) {
@@ -99,6 +90,19 @@ public class MainFragment extends BrowseSupportFragment {
                 for (String header : strings){
                     HeaderItem headerItem = new HeaderItem(header);
                     rowsAdapter.add(new PageRow(headerItem));
+                }
+                rowsAdapter.add(rowsAdapter.size(),new DividerRow());
+            }
+        });
+        */
+        mainViewModel.getHeaders().observe(this, new Observer<List<HeaderItem>>() {
+            @Override
+            public void onChanged(List<HeaderItem> headerItems) {
+                rowsAdapter.add(0,new SectionRow(new HeaderItem("USB Devices")));
+                rowsAdapter.add(1,new DividerRow());
+                rowsAdapter.add(2,new PageRow(new HeaderItem("USB All")));
+                for (HeaderItem header : headerItems) {
+                    rowsAdapter.add(new PageRow(header));
                 }
                 rowsAdapter.add(rowsAdapter.size(),new DividerRow());
             }
