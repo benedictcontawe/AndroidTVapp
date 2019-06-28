@@ -1,8 +1,9 @@
-package com.example.androidtvapptutorial.Model.Repository;
+package com.example.androidtvapptutorial;
 
 import android.content.Context;
 import androidx.lifecycle.MutableLiveData;
 import com.example.androidtvapptutorial.Model.DataModel.*;
+import com.example.androidtvapptutorial.Model.JsonReader;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
