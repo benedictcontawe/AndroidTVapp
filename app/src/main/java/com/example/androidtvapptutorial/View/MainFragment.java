@@ -79,8 +79,6 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void createRows(){
-        rowsAdapter.add(new SectionRow(new HeaderItem("USB Devices")));
-        rowsAdapter.add(new DividerRow());
         /*
         //Create List of HeaderItem Data and add to the Instance of Array Object Adapter
         List<HeaderItem> dummyHeaders = new ArrayList<>();
@@ -95,13 +93,15 @@ public class MainFragment extends BrowseSupportFragment {
         mainViewModel.getHeaders().observe(this, new Observer<Set<String>>() {
             @Override
             public void onChanged(Set<String> strings) {
+                rowsAdapter.add(0,new SectionRow(new HeaderItem("USB Devices")));
+                rowsAdapter.add(1,new DividerRow());
+                rowsAdapter.add(2,new PageRow(new HeaderItem("USB All")));
                 for (String header : strings){
                     HeaderItem headerItem = new HeaderItem(header);
                     rowsAdapter.add(new PageRow(headerItem));
                 }
+                rowsAdapter.add(rowsAdapter.size(),new DividerRow());
             }
         });
-
-        rowsAdapter.add(new DividerRow());
     }
 }

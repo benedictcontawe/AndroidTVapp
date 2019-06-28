@@ -16,7 +16,7 @@ public class JsonReader {
 
     public String readJsonFile(String jsonFile){
         int resource = context.getResources().getIdentifier(jsonFile, "raw", context.getPackageName());
-        Log.d(JsonReader.class.getSimpleName(), "readJsonFile: resource" + resource);
+        Log.e(JsonReader.class.getSimpleName(), "readJsonFile: resource" + resource);
 
         if (resource == 0) {
             return "[]";

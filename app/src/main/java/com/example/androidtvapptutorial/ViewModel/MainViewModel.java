@@ -1,6 +1,7 @@
 package com.example.androidtvapptutorial.ViewModel;
 
 import android.app.Application;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -34,8 +35,16 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<MediaTitle>> getUsbFilesList(String... usbNames) {
-        return Transformations.map(usbInfoMap, map ->
-                map.get(usbNames[0])
-        );
+        if (usbNames[0] == "USB All"){
+            Log.e(MainViewModel.class.getSimpleName(),"USB All");
+            return Transformations.map(usbInfoMap, map ->
+                    map.get(usbNames[0])
+            );
+        }
+        else {
+            return Transformations.map(usbInfoMap, map ->
+                    map.get(usbNames[0])
+            );
+        }
     }
 }

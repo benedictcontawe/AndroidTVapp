@@ -17,7 +17,7 @@ public class Repository {
     private MutableLiveData<Map<String, List<MediaTitle>>> usbInfoMap = new MutableLiveData<>();
 
     public Repository(Context context) {
-
+        jsonFileReader = new JsonReader(context);
     }
 
     public static Repository getInstance(Context context){
