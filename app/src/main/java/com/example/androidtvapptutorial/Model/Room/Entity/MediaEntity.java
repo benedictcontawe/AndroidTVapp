@@ -1,5 +1,6 @@
 package com.example.androidtvapptutorial.Model.Room.Entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,14 +8,19 @@ import androidx.room.PrimaryKey;
 public class MediaEntity {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
 
+    @ColumnInfo(name = "type")
     private String type;
 
+    @ColumnInfo(name = "title")
     private String title;
 
+    @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name = "localImageResource")
     private String localImageResource;
 
     public MediaEntity(String type, String title, String description, String localImageResource) {
