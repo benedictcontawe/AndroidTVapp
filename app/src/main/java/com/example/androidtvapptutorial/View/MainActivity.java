@@ -3,8 +3,10 @@ package com.example.androidtvapptutorial.View;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.androidtvapptutorial.Model.DataModel.MediaRequestModel;
+import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
 import com.example.androidtvapptutorial.R;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
@@ -29,7 +31,7 @@ public class MainActivity extends FragmentActivity {
         usbInfoList.add(new MediaRequestModel(true, "usb4"));
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.setUsbInfoList(usbInfoList);
+        mainViewModel.requestMediaCotents(usbInfoList);
     }
 
     @Override
@@ -37,12 +39,18 @@ public class MainActivity extends FragmentActivity {
         super.onStart();
         Log.d(MainActivity.class.getSimpleName(),"onStart");
 
+        mainViewModel.getAll().observe(this, new Observer<List<MediaEntity>>() {
+            @Override
+            public void onChanged(List<MediaEntity> mediaEntities) {
+                Log.e(MainActivity.class.toString(),String.valueOf(mediaEntities.size()));
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.d(MainActivity.class.getSimpleName(),"onDestroy");
-
+        //mainViewModel.deleteAll();
     }
 }

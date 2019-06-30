@@ -15,7 +15,7 @@ public interface BaseRepository {
 
     public void deleteAll();
 
-    public void getFirst(MediaEntity mediaEntity);
+    //public void getFirst(MediaEntity mediaEntity);
 
-    public LiveData<List<MediaEntity>> getAllMedia();
+    //public LiveData<List<MediaEntity>> getAll();
 }

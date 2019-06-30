@@ -50,7 +50,7 @@ public abstract class MediaDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            //mediaDAO.insert(new MediaEntity("VIDEO","video.mp4","Lorem Ipsum Dolor","Lorem"));
+            //mediaDAO.insert(new MediaEntity("USB","VIDEO","video.mp4","Lorem Ipsum Dolor","Lorem"));
             return null;
         }
     }

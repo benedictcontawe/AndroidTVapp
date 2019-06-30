@@ -1,5 +1,6 @@
 package com.example.androidtvapptutorial.Model.Room.DataAccessObject;
 
+import androidx.leanback.widget.HeaderItem;
 import androidx.lifecycle.LiveData;
 import androidx.room.*;
 import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
@@ -18,12 +19,16 @@ public interface MediaDAO {
     @Delete
     void delete(MediaEntity mediaEntity);
 
-    @Query("DELETE FROM media_source")
+    @Query("DELETE FROM media_table")
     void deleteAll();
 
-    //@Query("SELECT * FROM media_source WHERE id = ")
-    //LiveData<String> getFirst(String find);
+    @Query("SELECT DISTINCT Name FROM media_table")
+    LiveData<List<String>> getNames();
 
-    @Query("SELECT * FROM media_source ORDER BY id DESC")
+    @Query("SELECT * FROM media_table WHERE Name = :mediaName" )
+    LiveData<MediaEntity> getFirst(String mediaName);
+
+    @Query("SELECT * FROM media_table ORDER BY id DESC")
     LiveData<List<MediaEntity>> getAll();
+
 }
