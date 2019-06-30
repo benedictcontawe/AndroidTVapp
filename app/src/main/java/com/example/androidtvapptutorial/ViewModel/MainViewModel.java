@@ -17,7 +17,7 @@ import java.util.List;
 public class MainViewModel extends AndroidViewModel {
 
     private MediaRepository repository;
-    private LiveData<List<HeaderItem>> headerItems;
+    private MutableLiveData<List<HeaderItem>> headerItems = new MutableLiveData<>();
     private MutableLiveData<List<MediaTitle>> rowItems = new MutableLiveData<>();
     private LiveData<List<MediaEntity>> allMedia;
 
@@ -30,7 +30,7 @@ public class MainViewModel extends AndroidViewModel {
 
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
         Log.e(MainViewModel.class.toString(),String.valueOf(mediaContents.size()));
-        repository.deleteAll();
+        //repository.deleteAll();
         repository.requestMediaCotents(mediaContents);
     }
 

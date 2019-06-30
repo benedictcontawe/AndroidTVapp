@@ -61,11 +61,12 @@ public class MediaRepository implements BaseRepository {
     public LiveData<List<MediaEntity>> getAllMedia(){
         return allMedia;
     }
-
+    /*
     public LiveData<List<HeaderItem>> getAllHeaders() {
-        LiveData<List<HeaderItem>> dummyHeader = new MutableLiveData<>()
+        LiveData<List<HeaderItem>> dummyHeader = new MutableLiveData<>();
         return allHeaders;
     }
+    */
     //endregion
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
         MediaResponseModel[] mediaProcessedItems;
