@@ -33,6 +33,9 @@ public class MainViewModel extends AndroidViewModel {
     public void setUsbInfoList(List<MediaRequestModel> usbInfoList) {
         //repository.setUSBInfoList(usbInfoList);
         //usbInfoMap = repository.getUsbInfoMap();
+
+        Log.e(MainViewModel.class.toString(),String.valueOf(usbInfoList.size()));
+
     }
 
     public LiveData<List<HeaderItem>> getHeaders() {
