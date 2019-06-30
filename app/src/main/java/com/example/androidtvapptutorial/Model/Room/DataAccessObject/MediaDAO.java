@@ -7,7 +7,7 @@ import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
 import java.util.List;
 
 @Dao
-public interface MediaDAO<T> {
+public interface MediaDAO {
 
     @Insert
     void insert(MediaEntity mediaEntity);
