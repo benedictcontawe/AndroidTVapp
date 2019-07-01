@@ -20,7 +20,7 @@ public class MediaRepository implements BaseRepository {
 
     private MediaDAO mediaDAO;
     private LiveData<List<MediaEntity>> allMedia;
-    //private LiveData<List<HeaderItem>> allHeaders;
+    private LiveData<List<String>> allHeaders;
     private JsonReader jsonReader;
 
     public MediaRepository(Application application){
@@ -28,7 +28,7 @@ public class MediaRepository implements BaseRepository {
         mediaDAO = database.mediaDAO();
 
         allMedia = mediaDAO.getAll();
-        //allHeaders = getHeaderItems();
+        allHeaders = mediaDAO.getNames();
 
         jsonReader = new JsonReader(application);
     }
@@ -61,12 +61,10 @@ public class MediaRepository implements BaseRepository {
     public LiveData<List<MediaEntity>> getAllMedia(){
         return allMedia;
     }
-    /*
-    public LiveData<List<HeaderItem>> getAllHeaders() {
-        LiveData<List<HeaderItem>> dummyHeader = new MutableLiveData<>();
+
+    public LiveData<List<String>> getAllHeaders() {
         return allHeaders;
     }
-    */
     //endregion
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
         MediaResponseModel[] mediaProcessedItems;
@@ -93,18 +91,6 @@ public class MediaRepository implements BaseRepository {
             }
         }
     }
-    /*
-    private LiveData<List<HeaderItem>> getHeaderItems(){
-        List<HeaderItem> dummyHeaders = new ArrayList<>();
-        dummyHeaders.add(new HeaderItem( "USB1"));
-        dummyHeaders.add(new HeaderItem( "USB2"));
-        dummyHeaders.add(new HeaderItem( "USB3"));
-        //headerItems.setValue(dummyHeaders);
-
-
-        return allHeaders;
-    }
-    */
     //region Static Class For Repository
     private static class insertMediaAsyncTask extends AsyncTask<MediaEntity, Void, Void> {
         private  MediaDAO mediaDAO;

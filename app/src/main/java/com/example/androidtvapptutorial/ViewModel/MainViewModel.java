@@ -17,7 +17,7 @@ import java.util.List;
 public class MainViewModel extends AndroidViewModel {
 
     private MediaRepository repository;
-    private MutableLiveData<List<HeaderItem>> headerItems = new MutableLiveData<>();
+    private LiveData<List<String>> headerItems = new MutableLiveData<>();
     private MutableLiveData<List<MediaTitle>> rowItems = new MutableLiveData<>();
     private LiveData<List<MediaEntity>> allMedia;
 
@@ -26,23 +26,24 @@ public class MainViewModel extends AndroidViewModel {
 
         repository = new MediaRepository(application);
         allMedia = repository.getAllMedia();
+        headerItems = repository.getAllHeaders();
     }
 
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
         Log.e(MainViewModel.class.toString(),String.valueOf(mediaContents.size()));
-        //repository.deleteAll();
+        repository.deleteAll();
         repository.requestMediaCotents(mediaContents);
     }
 
-    public LiveData<List<HeaderItem>> getHeaders() {
-        List<HeaderItem> dummyHeaders = new ArrayList<>();
-        dummyHeaders.add(new HeaderItem( "USB1"));
-        dummyHeaders.add(new HeaderItem( "USB2"));
-        dummyHeaders.add(new HeaderItem( "USB3"));
-        headerItems.setValue(dummyHeaders);
-
+    public LiveData<List<String>> getHeaders() {
+        //List<HeaderItem> dummyHeaders = new ArrayList<>();
+        //dummyHeaders.add(new HeaderItem( "USB1"));
+        //dummyHeaders.add(new HeaderItem( "USB2"));
+        //dummyHeaders.add(new HeaderItem( "USB3"));
+        //headerItems.setValue(dummyHeaders);
         return headerItems;
     }
+
 
     public LiveData<List<MediaTitle>> getRows(String... selectedHeaderName) {
         Log.e(MainViewModel.class.getSimpleName(),selectedHeaderName[0]);

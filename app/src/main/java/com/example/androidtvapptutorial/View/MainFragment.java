@@ -95,14 +95,15 @@ public class MainFragment extends BrowseSupportFragment {
             }
         });
         */
-        mainViewModel.getHeaders().observe(this, new Observer<List<HeaderItem>>() {
+        mainViewModel.getHeaders().observe(this, new Observer<List<String>>() {
             @Override
-            public void onChanged(List<HeaderItem> headerItems) {
+            public void onChanged(List<String> headerItems) {
                 rowsAdapter.add(0,new SectionRow(new HeaderItem("USB Devices")));
                 rowsAdapter.add(1,new DividerRow());
                 rowsAdapter.add(2,new PageRow(new HeaderItem("USB All")));
-                for (HeaderItem header : headerItems) {
-                    rowsAdapter.add(new PageRow(header));
+                for (String header : headerItems) {
+                    rowsAdapter.add(new PageRow(new HeaderItem(header)));
+                    //rowsAdapter.add(new PageRow(header));
                 }
                 rowsAdapter.add(rowsAdapter.size(),new DividerRow());
             }
