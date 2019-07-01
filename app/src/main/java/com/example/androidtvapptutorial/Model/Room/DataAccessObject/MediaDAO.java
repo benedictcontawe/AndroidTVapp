@@ -3,10 +3,13 @@ package com.example.androidtvapptutorial.Model.Room.DataAccessObject;
 import androidx.leanback.widget.HeaderItem;
 import androidx.lifecycle.LiveData;
 import androidx.room.*;
+import com.example.androidtvapptutorial.Model.DataModel.MediaTitle;
 import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
 import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Dao
 public interface MediaDAO {
@@ -29,8 +32,8 @@ public interface MediaDAO {
     @Query("SELECT * FROM media_table WHERE Name = :mediaName" )
     LiveData<MediaEntity> getFirst(String mediaName);
 
-    @Query("SELECT Title,Description FROM media_table WHERE Type = \"VIDEO\"" )
-    LiveData<List<VideoModel>> getVideos();
+    @Query("SELECT Id, Title, Description, Type FROM media_table")
+    LiveData<List<MediaEntity>> getRows();
 
     @Query("SELECT * FROM media_table ORDER BY id DESC")
     LiveData<List<MediaEntity>> getAll();

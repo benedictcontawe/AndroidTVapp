@@ -102,8 +102,8 @@ public class MainFragment extends BrowseSupportFragment {
                 rowsAdapter.add(0,new SectionRow(new HeaderItem("USB Devices")));
                 rowsAdapter.add(1,new DividerRow());
                 rowsAdapter.add(2,new PageRow(new HeaderItem("USB All")));
-                for (String header : headerItems) {
-                    rowsAdapter.add(new PageRow(new HeaderItem(header)));
+                for (String headerItem : headerItems) {
+                    rowsAdapter.add(new PageRow(new HeaderItem(headerItem)));
                     //rowsAdapter.add(new PageRow(header));
                 }
                 rowsAdapter.add(rowsAdapter.size(),new DividerRow());

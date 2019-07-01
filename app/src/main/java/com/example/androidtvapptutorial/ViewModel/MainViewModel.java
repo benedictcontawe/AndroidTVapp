@@ -4,9 +4,7 @@ import android.app.Application;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.leanback.widget.HeaderItem;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.*;
 import com.example.androidtvapptutorial.Model.DataModel.*;
 import com.example.androidtvapptutorial.Model.Repository.MediaRepository;
 import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
@@ -17,7 +15,6 @@ import java.util.List;
 public class MainViewModel extends AndroidViewModel {
 
     private MediaRepository repository;
-    private LiveData<List<String>> headerItems = new MutableLiveData<>();
     private MutableLiveData<List<MediaTitle>> rowItems = new MutableLiveData<>();
     private LiveData<List<MediaEntity>> allMedia;
 
@@ -25,6 +22,7 @@ public class MainViewModel extends AndroidViewModel {
         super(application);
 
         repository = MediaRepository.getInstance(application);
+        allMedia = repository.getAllMedia();
     }
 
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
@@ -42,46 +40,46 @@ public class MainViewModel extends AndroidViewModel {
         return repository.getAllHeaders();
     }
 
-
-    public LiveData<List<MediaTitle>> getRows(String... selectedHeaderName) {
+    public LiveData<List<MediaEntity>> getRows(String... selectedHeaderName) {
         Log.e(MainViewModel.class.getSimpleName(),selectedHeaderName[0]);
-        List<MediaTitle> sampleMediaTitle = new ArrayList<>();
-        List<VideoModel> mediaDataVideo = new ArrayList<>();
-        List<MusicModel> mediaDataMusic = new ArrayList<>();
-        List<ImageModel> mediaDataImage = new ArrayList<>();
-        List<DocumentModel> mediaDataDocuments = new ArrayList<>();
+        //List<MediaTitle> sampleMediaTitle = new ArrayList<>();
+        //List<VideoModel> mediaDataVideo = new ArrayList<>();
+        //List<MusicModel> mediaDataMusic = new ArrayList<>();
+        //List<ImageModel> mediaDataImage = new ArrayList<>();
+        //List<DocumentModel> mediaDataDocuments = new ArrayList<>();
 
-        mediaDataVideo.add(new VideoModel("video.mp4","video.mp4"));
-        mediaDataVideo.add(new VideoModel("video1.mp4", "video.mp4"));
-        mediaDataVideo.add(new VideoModel("video2.mp4", "video.mp4"));
+        //mediaDataVideo.add(new VideoModel("video.mp4","video.mp4"));
+        //mediaDataVideo.add(new VideoModel("video1.mp4", "video.mp4"));
+        //mediaDataVideo.add(new VideoModel("video2.mp4", "video.mp4"));
 
-        mediaDataMusic.add(new MusicModel("music1.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music2.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music3.mp3","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music4.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music5.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music6.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
-        mediaDataMusic.add(new MusicModel("music7.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
 
-        mediaDataImage.add(new ImageModel("img1.png", "img1.png"));
-        mediaDataImage.add(new ImageModel("img2.png","img1.png"));
-        mediaDataImage.add(new ImageModel("img3.png","img1.png"));
-        mediaDataImage.add(new ImageModel("img4.png","img1.png"));
+        //mediaDataMusic.add(new MusicModel("music1.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music2.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music3.mp3","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music4.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music5.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music6.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
+        //mediaDataMusic.add(new MusicModel("music7.mp3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit erat tortor. Phasellus auctor tortor in sodales convallis. Curabitur in mauris leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque eget molestie enim. Maecenas mollis diam nunc, sed sodales ante vestibulum nec. Donec in elit vitae nibh mollis gravida in luctus neque."));
 
-        mediaDataDocuments.add(new DocumentModel("Document 1"));
-        mediaDataDocuments.add(new DocumentModel("Document 2"));
-        mediaDataDocuments.add(new DocumentModel("Document 3"));
-        mediaDataDocuments.add(new DocumentModel("Document 4"));
-        mediaDataDocuments.add(new DocumentModel("Document 5"));
+        //mediaDataImage.add(new ImageModel("img1.png", "img1.png"));
+        //mediaDataImage.add(new ImageModel("img2.png","img1.png"));
+        //mediaDataImage.add(new ImageModel("img3.png","img1.png"));
+        //mediaDataImage.add(new ImageModel("img4.png","img1.png"));
 
-        sampleMediaTitle.add(new MediaTitle("Video", mediaDataVideo));
-        sampleMediaTitle.add(new MediaTitle("Music", mediaDataMusic));
-        sampleMediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
-        sampleMediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
+        //mediaDataDocuments.add(new DocumentModel("Document 1"));
+        //mediaDataDocuments.add(new DocumentModel("Document 2"));
+        //mediaDataDocuments.add(new DocumentModel("Document 3"));
+        //mediaDataDocuments.add(new DocumentModel("Document 4"));
+        //mediaDataDocuments.add(new DocumentModel("Document 5"));
 
-        rowItems.setValue(sampleMediaTitle);
+        //sampleMediaTitle.add(new MediaTitle("Video", mediaDataVideo));
+        //sampleMediaTitle.add(new MediaTitle("Music", mediaDataMusic));
+        //sampleMediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
+        //sampleMediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
 
-        return rowItems;
+        //rowItems.setValue(sampleMediaTitle);
+
+        return repository.getAllRows();
     }
 
     private void insert(MediaEntity mediaEntity){
@@ -101,6 +99,6 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<MediaEntity>> getAll(){
-        return repository.getAllMedia();
+        return allMedia;
     }
 }

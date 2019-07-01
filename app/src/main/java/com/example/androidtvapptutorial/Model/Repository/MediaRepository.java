@@ -2,11 +2,13 @@ package com.example.androidtvapptutorial.Model.Repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 import androidx.leanback.widget.HeaderItem;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.androidtvapptutorial.Model.DataModel.MediaRequestModel;
 import com.example.androidtvapptutorial.Model.DataModel.MediaResponseModel;
+import com.example.androidtvapptutorial.Model.DataModel.MediaTitle;
 import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
 import com.example.androidtvapptutorial.Model.JsonReader;
 import com.example.androidtvapptutorial.Model.Room.DataAccessObject.MediaDAO;
@@ -15,7 +17,9 @@ import com.example.androidtvapptutorial.Model.Room.MediaDatabase;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MediaRepository implements BaseRepository {
 
@@ -69,8 +73,8 @@ public class MediaRepository implements BaseRepository {
         return mediaDAO.getNames();
     }
 
-    public LiveData<List<VideoModel>> getAllVideos(){
-        return mediaDAO.getVideos();
+    public LiveData<List<MediaEntity>> getAllRows(){
+        return mediaDAO.getRows();
     }
     //endregion
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
@@ -93,6 +97,9 @@ public class MediaRepository implements BaseRepository {
                         break;
                     case "DOC":
                         insert(new MediaEntity(mediaContent.getFolderName(),"DOC",item.getTitle(),item.getDescription(),item.getLocalImageResource()));
+                        break;
+                    default:
+                        Log.e(MediaRepository.class.getSimpleName(),item.getTitle() + " " + item.getDescription() + " " + item.getType() + " " + item.getLocalImageResource());
                         break;
                 }
             }

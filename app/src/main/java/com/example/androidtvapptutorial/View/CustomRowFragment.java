@@ -9,9 +9,11 @@ import androidx.leanback.widget.*;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.androidtvapptutorial.Model.DataModel.*;
+import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
 import com.example.androidtvapptutorial.View.ViewController.MediaPresenterSelector;
 import com.example.androidtvapptutorial.ViewModel.MainViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomRowFragment extends RowsSupportFragment implements OnItemViewClickedListener {
@@ -63,13 +65,40 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
     }
 
     private void createRows() {
-        mainViewModel.getRows(selectedUnivarsalSerialBusName).observe(this, new Observer<List<MediaTitle>>() {
+        mainViewModel.getRows(selectedUnivarsalSerialBusName).observe(this, new Observer<List<MediaEntity>>() {
             @Override
-            public void onChanged(List<MediaTitle> mediaTitles) {
-                for (MediaTitle mediaTitle : mediaTitles) {
-                    //rowsAdapter.clear();
-                    rowsAdapter.add(createCardRow(mediaTitle));
+            public void onChanged(List<MediaEntity> mediaEntities) {
+                rowsAdapter.clear();
+                List<MediaTitle> mediaTitle = new ArrayList<>();
+                List<VideoModel> mediaDataVideo = new ArrayList<>();
+                List<MusicModel> mediaDataMusic = new ArrayList<>();
+                List<ImageModel> mediaDataImage = new ArrayList<>();
+                List<DocumentModel> mediaDataDocuments = new ArrayList<>();
+
+                for (MediaEntity mediaEntity : mediaEntities){
+                    switch (mediaEntity.getType()){
+                        case "IMAGE":
+                            mediaDataImage.add(new ImageModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            break;
+                        case "VIDEO":
+                            mediaDataVideo.add(new VideoModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            break;
+                        case "MUSIC":
+                            mediaDataMusic.add(new MusicModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            break;
+                        case "DOC":
+                            mediaDataDocuments.add(new DocumentModel(mediaEntity.getTitle()));
+                            break;
+                        default:
+                            Log.e(CustomRowFragment.class.getSimpleName(),mediaEntity.getTitle() + " " + mediaEntity.getDescription() + " " + mediaEntity.getType() + " " + mediaEntity.getLocalImageResource());
+                            break;
+                    }
                 }
+                mediaTitle.add(new MediaTitle("Video", mediaDataVideo));
+                mediaTitle.add(new MediaTitle("Music", mediaDataMusic));
+                mediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
+                mediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
+                rowsAdapter.add(createCardRow(mediaTitle));
             }
         });
     }
