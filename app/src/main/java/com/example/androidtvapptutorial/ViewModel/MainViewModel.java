@@ -24,9 +24,7 @@ public class MainViewModel extends AndroidViewModel {
     public MainViewModel(@NonNull Application application) {
         super(application);
 
-        repository = new MediaRepository(application);
-        allMedia = repository.getAllMedia();
-        headerItems = repository.getAllHeaders();
+        repository = MediaRepository.getInstance(application);
     }
 
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
@@ -41,7 +39,7 @@ public class MainViewModel extends AndroidViewModel {
         //dummyHeaders.add(new HeaderItem( "USB2"));
         //dummyHeaders.add(new HeaderItem( "USB3"));
         //headerItems.setValue(dummyHeaders);
-        return headerItems;
+        return repository.getAllHeaders();
     }
 
 
@@ -103,6 +101,6 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<MediaEntity>> getAll(){
-        return allMedia;
+        return repository.getAllMedia();
     }
 }

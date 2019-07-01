@@ -98,6 +98,7 @@ public class MainFragment extends BrowseSupportFragment {
         mainViewModel.getHeaders().observe(this, new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> headerItems) {
+                rowsAdapter.clear();
                 rowsAdapter.add(0,new SectionRow(new HeaderItem("USB Devices")));
                 rowsAdapter.add(1,new DividerRow());
                 rowsAdapter.add(2,new PageRow(new HeaderItem("USB All")));

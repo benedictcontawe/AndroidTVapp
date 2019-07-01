@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.androidtvapptutorial.Model.DataModel.MediaRequestModel;
 import com.example.androidtvapptutorial.Model.DataModel.MediaResponseModel;
+import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
 import com.example.androidtvapptutorial.Model.JsonReader;
 import com.example.androidtvapptutorial.Model.Room.DataAccessObject.MediaDAO;
 import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
@@ -18,19 +19,21 @@ import java.util.List;
 
 public class MediaRepository implements BaseRepository {
 
+    private static MediaRepository repository = null;
     private MediaDAO mediaDAO;
-    private LiveData<List<MediaEntity>> allMedia;
-    private LiveData<List<String>> allHeaders;
     private JsonReader jsonReader;
 
     public MediaRepository(Application application){
         MediaDatabase database = MediaDatabase.getInstance(application);
         mediaDAO = database.mediaDAO();
-
-        allMedia = mediaDAO.getAll();
-        allHeaders = mediaDAO.getNames();
-
         jsonReader = new JsonReader(application);
+    }
+
+    public static MediaRepository getInstance(Application application){
+        if (repository == null){
+            return new MediaRepository(application);
+        }
+        return repository;
     }
     //region CRUD Operation
     @Override
@@ -59,11 +62,15 @@ public class MediaRepository implements BaseRepository {
     }
     */
     public LiveData<List<MediaEntity>> getAllMedia(){
-        return allMedia;
+        return mediaDAO.getAll();
     }
 
     public LiveData<List<String>> getAllHeaders() {
-        return allHeaders;
+        return mediaDAO.getNames();
+    }
+
+    public LiveData<List<VideoModel>> getAllVideos(){
+        return mediaDAO.getVideos();
     }
     //endregion
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
