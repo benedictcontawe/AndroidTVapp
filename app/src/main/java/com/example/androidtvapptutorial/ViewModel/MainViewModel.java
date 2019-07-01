@@ -78,8 +78,12 @@ public class MainViewModel extends AndroidViewModel {
         //sampleMediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
 
         //rowItems.setValue(sampleMediaTitle);
-
-        return repository.getAllRows();
+        if(selectedHeaderName[0] == "USB All") {
+            return repository.getAllRows();
+        }
+        else {
+            return repository.getAllRows(selectedHeaderName[0]);
+        }
     }
 
     private void insert(MediaEntity mediaEntity){

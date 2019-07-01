@@ -76,6 +76,10 @@ public class MediaRepository implements BaseRepository {
     public LiveData<List<MediaEntity>> getAllRows(){
         return mediaDAO.getRows();
     }
+
+    public LiveData<List<MediaEntity>> getAllRows(String flashDriveName){
+        return mediaDAO.getRows(flashDriveName);
+    }
     //endregion
     public void requestMediaCotents(List<MediaRequestModel> mediaContents) {
         MediaResponseModel[] mediaProcessedItems;

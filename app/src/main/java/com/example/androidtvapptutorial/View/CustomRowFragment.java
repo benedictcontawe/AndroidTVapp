@@ -69,22 +69,22 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
             @Override
             public void onChanged(List<MediaEntity> mediaEntities) {
                 rowsAdapter.clear();
-                List<MediaTitle> mediaTitle = new ArrayList<>();
-                List<VideoModel> mediaDataVideo = new ArrayList<>();
-                List<MusicModel> mediaDataMusic = new ArrayList<>();
-                List<ImageModel> mediaDataImage = new ArrayList<>();
+                List<MediaTitle> mediaTitles = new ArrayList<>();
+                List<VideoModel> mediaDataVideos = new ArrayList<>();
+                List<MusicModel> mediaDataAudios = new ArrayList<>();
+                List<ImageModel> mediaDataImages = new ArrayList<>();
                 List<DocumentModel> mediaDataDocuments = new ArrayList<>();
 
                 for (MediaEntity mediaEntity : mediaEntities){
                     switch (mediaEntity.getType()){
                         case "IMAGE":
-                            mediaDataImage.add(new ImageModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            mediaDataImages.add(new ImageModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
                             break;
                         case "VIDEO":
-                            mediaDataVideo.add(new VideoModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            mediaDataVideos.add(new VideoModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
                             break;
                         case "MUSIC":
-                            mediaDataMusic.add(new MusicModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            mediaDataAudios.add(new MusicModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
                             break;
                         case "DOC":
                             mediaDataDocuments.add(new DocumentModel(mediaEntity.getTitle()));
@@ -94,11 +94,16 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
                             break;
                     }
                 }
-                mediaTitle.add(new MediaTitle("Video", mediaDataVideo));
-                mediaTitle.add(new MediaTitle("Music", mediaDataMusic));
-                mediaTitle.add(new MediaTitle("Pictures", mediaDataImage));
-                mediaTitle.add(new MediaTitle("Documents", mediaDataDocuments));
-                rowsAdapter.add(createCardRow(mediaTitle));
+                mediaTitles.add(new MediaTitle("Video", mediaDataVideos));
+                mediaTitles.add(new MediaTitle("Music", mediaDataAudios));
+                mediaTitles.add(new MediaTitle("Pictures", mediaDataImages));
+                mediaTitles.add(new MediaTitle("Documents", mediaDataDocuments));
+
+                for (MediaTitle mediaTitle : mediaTitles) {
+                    //rowsAdapter.clear();
+                    rowsAdapter.add(createCardRow(mediaTitle));
+                }
+
             }
         });
     }
