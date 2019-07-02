@@ -5,14 +5,14 @@ package com.example.androidtvapptutorial.View.ViewController;
 import android.content.Context;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.PresenterSelector;
+import com.example.androidtvapptutorial.Model.DataModel.AudioModel;
 import com.example.androidtvapptutorial.Model.DataModel.DocumentModel;
 import com.example.androidtvapptutorial.Model.DataModel.ImageModel;
-import com.example.androidtvapptutorial.Model.DataModel.MusicModel;
 import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
 import com.example.androidtvapptutorial.View.Presenter.MediaDocumentsPresenter;
 import com.example.androidtvapptutorial.View.Presenter.MediaImagePresenter;
 import com.example.androidtvapptutorial.View.Presenter.MediaVideoPresenter;
-import com.example.androidtvapptutorial.View.Presenter.MediaMusicPresenter;
+import com.example.androidtvapptutorial.View.Presenter.MediaAudioPresenter;
 //import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Target;
@@ -33,8 +33,8 @@ public class MediaPresenterSelector extends PresenterSelector {
             presenter = new MediaImagePresenter(mContext);
         } else if (item instanceof VideoModel) {
             presenter = new MediaVideoPresenter(mContext);
-        } else if (item instanceof MusicModel) {
-            presenter = new MediaMusicPresenter(mContext);
+        } else if (item instanceof AudioModel) {
+            presenter = new MediaAudioPresenter(mContext);
         } else if (item instanceof DocumentModel){
             presenter = new MediaDocumentsPresenter(mContext);
         } else {

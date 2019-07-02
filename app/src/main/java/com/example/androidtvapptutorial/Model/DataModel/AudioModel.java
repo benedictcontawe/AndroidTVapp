@@ -1,11 +1,11 @@
 package com.example.androidtvapptutorial.Model.DataModel;
 
-public class MusicModel {
+public class AudioModel {
 
     private String title;
     private String description;
 
-    public MusicModel(String title, String description){
+    public AudioModel(String title, String description){
         this.title = title;
         this.description = description;
     }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import androidx.leanback.widget.BaseCardView;
-import com.example.androidtvapptutorial.Model.DataModel.MusicModel;
+import com.example.androidtvapptutorial.Model.DataModel.AudioModel;
 import com.example.androidtvapptutorial.R;
 
 public class MediaMusicCardView extends BaseCardView {
@@ -20,11 +20,11 @@ public class MediaMusicCardView extends BaseCardView {
         TextView textTitle = findViewById(com.example.androidtvapptutorial.R.id.text_title);
         TextView textDescription = findViewById(com.example.androidtvapptutorial.R.id.text_description);
 
-        if (item instanceof MusicModel) {
-            MusicModel musicModel = (MusicModel) item;
+        if (item instanceof AudioModel) {
+            AudioModel audioModel = (AudioModel) item;
 
-            textTitle.setText(musicModel.getTitle());
-            textDescription.setText(musicModel.getDescription());
+            textTitle.setText(audioModel.getTitle());
+            textDescription.setText(audioModel.getDescription());
         }
     }
 }

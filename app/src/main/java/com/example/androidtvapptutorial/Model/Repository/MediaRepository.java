@@ -3,34 +3,27 @@ package com.example.androidtvapptutorial.Model.Repository;
 import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
-import androidx.leanback.widget.HeaderItem;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import com.example.androidtvapptutorial.Model.DataModel.MediaRequestModel;
 import com.example.androidtvapptutorial.Model.DataModel.MediaResponseModel;
-import com.example.androidtvapptutorial.Model.DataModel.MediaTitle;
-import com.example.androidtvapptutorial.Model.DataModel.VideoModel;
-import com.example.androidtvapptutorial.Model.JsonReader;
+import com.example.androidtvapptutorial.Model.GsonFormatter;
 import com.example.androidtvapptutorial.Model.Room.DataAccessObject.MediaDAO;
 import com.example.androidtvapptutorial.Model.Room.Entity.MediaEntity;
 import com.example.androidtvapptutorial.Model.Room.MediaDatabase;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MediaRepository implements BaseRepository {
 
     private static MediaRepository repository = null;
     private MediaDAO mediaDAO;
-    private JsonReader jsonReader;
+    private GsonFormatter gsonFormatter;
 
     public MediaRepository(Application application){
         MediaDatabase database = MediaDatabase.getInstance(application);
         mediaDAO = database.mediaDAO();
-        jsonReader = new JsonReader(application);
+        gsonFormatter = new GsonFormatter(application);
     }
 
     public static MediaRepository getInstance(Application application){
@@ -85,7 +78,7 @@ public class MediaRepository implements BaseRepository {
         MediaResponseModel[] mediaProcessedItems;
 
         for (MediaRequestModel mediaContent : mediaContents){
-            String fromJsonFile = jsonReader.readJsonFile(mediaContent.getFolderName());
+            String fromJsonFile = gsonFormatter.readJsonFile(mediaContent.getFolderName());
             mediaProcessedItems = new Gson().fromJson(fromJsonFile, MediaResponseModel[].class);
 
             for (MediaResponseModel item : mediaProcessedItems) {

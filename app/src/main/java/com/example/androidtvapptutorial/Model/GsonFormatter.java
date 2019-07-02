@@ -6,17 +6,17 @@ import android.util.Log;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class JsonReader {
+public class GsonFormatter {
 
     private Context context;
 
-    public JsonReader(Context context) {
+    public GsonFormatter(Context context) {
         this.context = context;
     }
 
     public String readJsonFile(String jsonFile){
         int resource = context.getResources().getIdentifier(jsonFile, "raw", context.getPackageName());
-        Log.e(JsonReader.class.getSimpleName(), "readJsonFile: resource" + resource);
+        Log.e(GsonFormatter.class.getSimpleName(), "readJsonFile: resource" + resource);
 
         if (resource == 0) {
             return "[]";
@@ -32,12 +32,12 @@ public class JsonReader {
                 line = reader.readLine();
             }
         } catch (Exception e) {
-            Log.e(JsonReader.class.getSimpleName(), "readJsonFile: ", e);
+            Log.e(GsonFormatter.class.getSimpleName(), "readJsonFile: ", e);
         } finally {
             try {
                 resourceReader.close();
             } catch (Exception e) {
-                Log.e(JsonReader.class.getSimpleName(), "readJsonFile: ", e);
+                Log.e(GsonFormatter.class.getSimpleName(), "readJsonFile: ", e);
             }
         }
 

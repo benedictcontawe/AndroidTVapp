@@ -71,7 +71,7 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
                 rowsAdapter.clear();
                 List<MediaTitle> mediaTitles = new ArrayList<>();
                 List<VideoModel> mediaDataVideos = new ArrayList<>();
-                List<MusicModel> mediaDataAudios = new ArrayList<>();
+                List<AudioModel> mediaDataAudios = new ArrayList<>();
                 List<ImageModel> mediaDataImages = new ArrayList<>();
                 List<DocumentModel> mediaDataDocuments = new ArrayList<>();
 
@@ -84,7 +84,7 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
                             mediaDataVideos.add(new VideoModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
                             break;
                         case "MUSIC":
-                            mediaDataAudios.add(new MusicModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
+                            mediaDataAudios.add(new AudioModel(mediaEntity.getTitle(),mediaEntity.getDescription()));
                             break;
                         case "DOC":
                             mediaDataDocuments.add(new DocumentModel(mediaEntity.getTitle()));
@@ -121,10 +121,10 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
                 Log.e("createCardRow",((VideoModel) item).getTitle());
                 VideoModel videoModel = (VideoModel) item;
                 adapter.add(videoModel);
-            } else if (item instanceof MusicModel) {
-                Log.e("createCardRow",((MusicModel) item).getTitle());
-                MusicModel musicModel = (MusicModel) item;
-                adapter.add(musicModel);
+            } else if (item instanceof AudioModel) {
+                Log.e("createCardRow",((AudioModel) item).getTitle());
+                AudioModel audioModel = (AudioModel) item;
+                adapter.add(audioModel);
             } else if (item instanceof DocumentModel) {
                 Log.e("createCardRow",((DocumentModel) item).getTitle());
                 DocumentModel documentModel = (DocumentModel) item;
@@ -139,6 +139,19 @@ public class CustomRowFragment extends RowsSupportFragment implements OnItemView
 
     @Override
     public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, Row row) {
-        Toast.makeText(getActivity(), "Clicked " + row, Toast.LENGTH_SHORT).show();
+        if (item instanceof ImageModel){
+            ImageModel imageModel = (ImageModel) item;
+            Toast.makeText(getActivity(), "Clicked " + imageModel.getTitle() + " " + row, Toast.LENGTH_SHORT).show();
+        } else if (item instanceof VideoModel){
+            VideoModel imageModel = (VideoModel) item;
+            Toast.makeText(getActivity(), "Clicked " + imageModel.getTitle() + " " + row, Toast.LENGTH_SHORT).show();
+        } else if (item instanceof AudioModel){
+            AudioModel imageModel = (AudioModel) item;
+            Toast.makeText(getActivity(), "Clicked " + imageModel.getTitle() + " " + row, Toast.LENGTH_SHORT).show();
+        } else if (item instanceof DocumentModel){
+            DocumentModel imageModel = (DocumentModel) item;
+            Toast.makeText(getActivity(), "Clicked " + imageModel.getTitle() + " " + row, Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
